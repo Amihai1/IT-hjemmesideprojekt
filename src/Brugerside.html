@@ -32,7 +32,80 @@
 </div>
 <!-- Content -->
 <div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+    <div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+        <div class="w3-panel">
 
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <style>
+                .collapsible {
+                    background-color: #f2f2f2;
+                    color: black;
+                    cursor: pointer;
+                    padding: 18px;
+                    width: 100%;
+                    border: none;
+                    text-align: left;
+                    outline: none;
+                    font-size: 15px;
+                }
+
+                .active, .collapsible:hover {
+                    background-color: #DCDCDC;
+                }
+
+                .content {
+                    padding: 0 18px;
+                    display: none;
+                    overflow: hidden;
+                    background-color: #f1f1f1;
+                }
+            </style>
+
+
+            <h2>Kommende aftaler:</h2>
+
+
+            <button type="button" class="collapsible" style="border-style: groove">&#10148; Rigshospitalet Ortopædkirugisk afdeling: d. 22/9-2020 kl. 14:30. Opfølgelse af benbrud
+            </button>
+            <div class="content">
+                <p>indsæt tekst her</p>
+            </div>
+            <button type="button" class="collapsible" style="border-style: groove">Har glemt min kode?</button>
+            <div class="content">
+                <p>indtæt tekst her</p>
+            </div>
+            <button type="button" class="collapsible" style="border-style: groove">Hvad er DinSundhed.dk</button>
+            <div class="content">
+                <p>indsæt tekst her</p>
+            </div>
+            <button type="button" class="collapsible" style="border-style: groove">Hvem står bag DinSundhed.dk</button>
+            <div class="content">
+                <p>indsæt tekst her</p>
+            </div>
+            <script>
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.display === "block") {
+                            content.style.display = "none";
+                        } else {
+                            content.style.display = "block";
+                        }
+                    });
+                }
+            </script>
+
+            <!-- Footer -->
+            <footer class="w3-center">
+                <p>Powered by DTU Sundtek</p>
+            </footer>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>
