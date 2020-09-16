@@ -1,0 +1,151 @@
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    form {
+        border: 3px solid #f1f1f1;
+    }
+
+
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #f1f1f1;
+        border: 1px solid;
+        border-color:  #ccc;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    uname.container2 {
+        alignment: center;
+    }
+
+
+    button:hover {
+        opacity: 1.0;
+    }
+
+    .container1 {
+        padding: 10px;
+        margin: auto;
+        width: 50%;
+        height: auto;
+    }
+
+    .container2 {
+        padding: 10px;
+        margin: auto;
+        width: 50%;
+        height: 500px;
+    }
+
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+
+    @media screen and (max-width: 300px) {
+        span.psw {
+            display: block;
+            float: none;
+        }
+    }
+
+
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: Black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #DCDCDC;
+    }
+
+    html, body, h1, h2, h3, h4 {
+        font-family: "Lato", sans-serif
+    }
+
+    .mySlides {
+        display: none
+    }
+
+    .w3-tag, .fa {
+        cursor: pointer
+    }
+
+    .w3-tag {
+        height: 15px;
+        width: 15px;
+        padding: 0;
+        margin-top: 6px
+    }
+</style>
+<body>
+<!-- Links (sit on top) -->
+<div class="w3-top">
+    <div class="w3-row w3-large w3-light-grey">
+        <div class="w3-col s3">
+            <a href="STARSIDE2.html" class="w3-button w3-block">HJEM</a>
+        </div>
+        <div class="w3-col s3">
+            <a href="Login.html" class="w3-button w3-block">LOGIN</a>
+        </div>
+        <div class="w3-col s3">
+            <a href="#about" class="w3-button w3-block">FAQ</a>
+        </div>
+        <div class="w3-col s3">
+            <a href="Kontakt.html" class="w3-button w3-block">KONTAKT</a>
+        </div>
+    </div>
+</div>
+
+<form action="/action_page.php" method="post">
+
+    <div class="container1" style="margin-top: 80px">
+        <label class="uname"><b>CPR-nummer</b></label>
+        <input type="text" placeholder="Indtast CPR-nummer" name="uname" required>
+        <label class="psw"><b>Kodeord</b></label>
+        <input type="password" placeholder="Indtast Kodeord" name="psw" required>
+    </div>
+
+    </div>
+    <div class="container2">
+        <button style="color: black" type="submit">Login</button>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Husk mig
+        </label>
+        <span class="psw">Glemt <a href="#">Kodeord?</a></span>
+    </div>
+</form>
+
+</body>
+</html>
