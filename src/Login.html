@@ -11,12 +11,9 @@
     body {
         font-family: Arial, Helvetica, sans-serif;
     }
-
     form {
         border: 3px solid #f1f1f1;
     }
-
-
     input[type=text], input[type=password] {
         width: 100%;
         padding: 12px 20px;
@@ -25,7 +22,6 @@
         border: 1px solid #ccc;
         box-sizing: border-box;
     }
-
     button {
         background-color: #f1f1f1;
         border: 1px solid;
@@ -36,35 +32,28 @@
         cursor: pointer;
         width: 100%;
     }
-
     uname.container2 {
         alignment: center;
     }
-
-
     button:hover {
         opacity: 1.0;
     }
-
     .container1 {
         padding: 10px;
         margin: auto;
         width: 50%;
         height: auto;
     }
-
     .container2 {
         padding: 10px;
         margin: auto;
         width: 50%;
         height: 500px;
     }
-
     span.psw {
         float: right;
         padding-top: 16px;
     }
-
     @media screen and (max-width: 300px) {
         span.psw {
             display: block;
@@ -119,8 +108,12 @@
         <div class="w3-col s3">
             <a href="Login.html" class="w3-button w3-block">LOGIN</a>
         </div>
-        <div class="w3-col s3">
-            <a href="FAQ.html" class="w3-button w3-block">FAQ</a>
+        <div class="w3-col s3 w3-dropdown-hover">
+            <button class="w3-col" style="border: none; height:45px"><i class="fa fa-caret-down" style="text-align: center">FAQ</i></button>
+            <div class="w3-dropdown-content w3-col">
+                <a href="FAQ.html" class="w3-button w3-block">Q&A</a>
+                <a href="Holdet bag.html" class="w3-button w3-block">Holdet Bag</a>
+            </div>
         </div>
         <div class="w3-col s3">
             <a href="Kontakt.html" class="w3-button w3-block">KONTAKT</a>
