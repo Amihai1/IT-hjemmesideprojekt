@@ -1,0 +1,79 @@
+form {
+    border: 3px solid #f1f1f1;
+}
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+button {
+    background-color: #f1f1f1;
+    border: 1px solid;
+    border-color:  #ccc;
+    color: black;
+    padding: 14px 20px;
+    cursor: pointer;
+    width: 100%;
+}
+uname.container2 {
+    alignment: center;
+}
+button:hover {
+    opacity: 1.0;
+}
+.container1 {
+    padding: 10px;
+    margin: auto;
+    width: 50%;
+    height: auto;
+    margin-top: 80px
+}
+.container2 {
+    padding: 10px;
+    margin: auto;
+    width: 50%;
+    height: 500px;
+}
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+}
+
+
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: Black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #DCDCDC;
+}
+
+html, body, h1, h2, h3, h4 {
+    font-family: "Lato", sans-serif
+}
+
+.mySlides {
+    display: none
+}
+
+.w3-tag, .fa {
+    cursor: pointer
+}
