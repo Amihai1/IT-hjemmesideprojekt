@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="standard.css">
-<link rel="stylesheet" href="Kontakt.css">
-
+<link rel="stylesheet" href="../CSS/standard.css">
+<link rel="stylesheet" href="../CSS/Login.html.css">
 <body>
 <!-- Links (sit on top) -->
 <div class="w3-top topnav" style="border: azure">
@@ -34,38 +34,22 @@
 
     </div>
 </div>
-<!-- Content -->
-<div class="container" style="margin-top: 80px">
-    <div style="text-align:center">
-        <h1>     </h1>
-        <h2>Kontakt Os</h2>
-        <p>Har du spørgsmål, er du velkommen til at skrive:</p>
+<form action="Brugerside.html" method="post">
+    <div class="container1">
+        <label class="uname"><b>CPR-nummer</b></label>
+        <input type="text" placeholder="Indtast CPR-nummer" name="uname" required>
+        <label class="psw"><b>Kodeord</b></label>
+        <input type="password" placeholder="Indtast Kodeord" name="psw" required>
     </div>
-    <div class="row">
-        <div class="column">
-            <img src="src/billeder/QUESTION-60a0eb023e6405be298221479c6f404a.jpg" height="475" width="512"/>
-        </div>
 
-        <div class="column">
-            <form action="STARSIDE2.html">
-                <label for="name">Navn</label>
-                <input type="text" id="name" name="Fornavn" placeholder="Fulde navn..">
-                <label for="email">E-mail</label>
-                <input type="text" id="email" name="Efternanv" placeholder="E-mail..">
-                <label for="emne">Emne</label>
-                <textarea id="emne" name="emne" placeholder="Skriv her.." style="height:170px"></textarea>
-                <input type="submit" value="Submit">
-            </form>
-        </div>
-        <div class="column">
-            <p2>Din Sundhed</p2>
-            <p3>DTU</p3>
-            <p4>Sundhedsteknologi</p4>
-            <p5>Danmark</p5>
-            <p6>+45 XX XX XX XX</p6>
-        </div>
     </div>
-</div>
-
+    <div class="container2">
+        <button style="color: black" type="submit">Login</button>
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Husk mig
+        </label>
+        <span class="psw">Glemt <a href="#">Kodeord?</a></span>
+    </div>
+</form>
 </body>
 </html>
