@@ -24,3 +24,7 @@
     text-align: left;
     font-weight: bold;
 }
+.collapsible span{
+    float: right;
+
+}
