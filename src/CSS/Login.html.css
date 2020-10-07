@@ -31,11 +31,23 @@ button:hover {
     height: auto;
     margin-top: 80px
 }
+.container1 b{
+    font-weight: bold;
+    font-size: 30px;
+}
 .container2 {
     padding: 10px;
     margin: auto;
     width: 50%;
     height: 500px;
+}
+.container2 button{
+    font-size: 24px;
+    font-weight: bold;
+}
+.container2 span{
+
+    font-size: 20px;
 }
 span.psw {
     float: right;
@@ -66,9 +78,6 @@ li a:hover {
     background-color: #DCDCDC;
 }
 
-html, body, h1, h2, h3, h4 {
-    font-family: "Lato", sans-serif
-}
 
 .mySlides {
     display: none

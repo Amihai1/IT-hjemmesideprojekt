@@ -40,7 +40,9 @@
     clear: both;
     display: table;
 }
-
+.footer a{
+    font-size: 24px;
+}
 .title {
     color: grey;
 }
