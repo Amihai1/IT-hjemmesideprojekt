@@ -19,7 +19,12 @@ html {
         display: block;
     }
 }
+.headline{
+    text-align: center;
+    margin-top: 30px;
+    font-size: 35px;
 
+}
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
@@ -27,7 +32,9 @@ html {
 .container {
     padding: 0 16px;
 }
-
+.container p{
+    font-size: 20px;
+}
 .container::after, .row::after {
     content: "";
     clear: both;
