@@ -1,0 +1,96 @@
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../CSS/standard.css">
+<link rel="stylesheet" href="../CSS/Beskeder.css">
+
+<body>
+<!-- Links (sit on top) -->
+<div class="w3-top topnav">
+    <div class="w3-row w3-large w3-light-grey">
+        <div class="w3-col s3">
+            <a href="Brugerside.html" class="w3-button w3-block"><i class="fa fa-fw fa-user-o"></i>&nbsp XXXXX</a>
+        </div>
+        <div class="w3-col s3">
+            <a href="Beskeder.html" class="w3-button w3-block"><i class="fa fa-fw fa-envelope-o"></i>&nbsp Beskeder</a>
+        </div>
+        <div class="w3-col s3">
+            <a href="#about" class="w3-button w3-block"><i class=" fa fa-file-text-o"></i>&nbsp Journal</a>
+        </div>
+        <div class="w3-col s3">
+            <a href="STARSIDE2.html" class="w3-button w3-block"> <i class="fa fa-sign-out" style="font-size:22px;color:red"></i>&nbsp Log Ud</a>
+        </div>
+    </div>
+</div>
+
+<!-- Content -->
+<div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+    <div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+        <div class="w3-panel">
+
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <!-- CSS Style -->
+
+
+            <h2>Beskeder:</h2>
+
+
+            <button type="button" class="collapsible" > <p> &#10148; &nbsp;&nbsp; Lægehuset Randers <span style="float: right">D. 1/9-2020</span> </p>
+            </button>
+            <div class="content">
+                <p>Hej XXXX.
+                <br> Der er kommet svar på dine prøver: <br> Klamydia test: Negativ.
+                    <br> Covid-19 test: Negativ.
+                    <br> Graviditets test: Positiv.
+                </p>
+            </div>
+            <button type="button" class="collapsible" > <p> &#10148 &nbsp;&nbsp; Russisk lægehus  <span>D. 10/7-2020 </span></p></button>
+            <div class="content">
+                <p>VODKA</p>
+            </div>
+            <button type="button" class="collapsible" > <p> &#10148 &nbsp;&nbsp; Russisk lægehus  <span>D. 10/7-2020 </span></p></button>
+            <div class="content">
+                <p>ER</p>
+            </div>
+            <button type="button" class="collapsible" ><p>&#10148 &nbsp;&nbsp; Russisk lægehus <span>D. 10/7-2020 </span></p></button>
+            <div class="content">
+                <p>SUNDT</p>
+            </div>
+
+            <!-- Funktion Java -->
+            <script>
+
+                var coll = document.getElementsByClassName("collapsible");
+                var i;
+
+                for (i = 0; i < coll.length; i++) {
+                    coll[i].addEventListener("click", function () {
+                        this.classList.toggle("active");
+                        var content = this.nextElementSibling;
+                        if (content.style.display === "block") {
+                            content.style.display = "none";
+                        } else {
+                            content.style.display = "block";
+                        }
+                    });
+
+                }
+            </script>
+
+
+            <!-- Footer -->
+            <footer class="w3-center">
+                <br>
+                <img src="../billeder/Skærmbillede%202020-09-26%20kl.%2010.40.12.png" height="100" width="150"/>
+                <p>Powered by DTU Sundtek</p>
+            </footer>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

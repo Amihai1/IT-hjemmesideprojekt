@@ -8,5 +8,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="w3" level="application" />
+    <orderEntry type="library" name="mariadb-java-client-2.6.2 (1)" level="project" />
+    <orderEntry type="library" name="jsch-0.1.54" level="project" />
   </component>
 </module>
