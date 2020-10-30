@@ -12,25 +12,33 @@
     border-style: groove
 }
 
-.active, .collapsible:hover {
-    background-color: #DCDCDC;
+
+.column1 {
+    float: left;
+    width: 33%;
+    margin-bottom: 16px;
+    padding: 0 8px;
 }
 
-.content {
-    padding: 0 18px;
-    display: none;
-    overflow: hidden;
-    background-color: #f1f1f1;
+@media screen and (max-width: 650px) {
+    .column1 {
+        width: auto;
+        display: block;
+    }
 }
-.content p{
-    font-weight: bold;
-    font-size: 20px;
+.card1 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-.collapsible p{
-    text-align: left;
-    font-weight: bold;
-}
-.collapsible span{
-    float: right;
 
+.container1 {
+    padding: 0 16px;
+}
+
+.container1::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.footer a{
+    font-size: 24px;
 }
