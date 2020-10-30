@@ -1,5 +1,4 @@
 
-
 .collapsible {
     background-color: #f2f2f2;
     color: black;
@@ -12,6 +11,22 @@
     border-style: groove
 }
 
+.row1  {
+    margin-top: 130px;
+}
+.card1 {
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 .column1 {
     float: left;
@@ -39,6 +54,13 @@
     clear: both;
     display: table;
 }
+
+img {
+    opacity: 0.5;
+}
+
+
 .footer a{
+
     font-size: 24px;
 }
