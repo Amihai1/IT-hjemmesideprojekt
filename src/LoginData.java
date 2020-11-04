@@ -20,7 +20,7 @@ public class LoginData {
     public void loaddata(){
 
         try {
-            PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM login WHERE patientid = ? " );
+            PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM login" );
             ResultSet rs = preparedStatement.executeQuery();
             ResultSetMetaData rsMatadata = rs.getMetaData();
             int column = rsMatadata.getColumnCount();
