@@ -1,4 +1,6 @@
 import java.sql.*;
+import java.time.LocalDateTime;
+
 
 public class MySQLConnector {
     static final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
@@ -8,8 +10,10 @@ public class MySQLConnector {
     private PreparedStatement prep = null;
 
     public static void main(String[] args) {
-        //Bruges bare til at have en metode som kan k re det hele fra.
-        //DBcomm db = new DBcomm();
+        LoginData loginData = new LoginData();
+        loginData.loaddata();
+    }
+    public static Connection getConn(){
         try {
             Class.forName("org.mariadb.jdbc.Driver");
 
@@ -17,14 +21,6 @@ public class MySQLConnector {
             String user, pass;
             user = "oskar";
             pass = "123456789";
-            // url="jdbc:mysql://localhost:3306/phoenixpoint?serverTimezone=Europe/Amsterdam&amp";
-
-            // Skal man fx. bruge 127.0.0.1 til en remote maskine?
-//Connection connection =
-// DriverManager.getConnection("jdbc:mariadb://localhost:3306/DB?user=root&password=myPassword");
-            //T nk jer om - kan man opn  mariadb forbindelse til en anden maskine uden at  ndre denne her?
-
-
             conn = DriverManager.getConnection(url, user, pass);
             if (conn != null) {
 
@@ -34,10 +30,7 @@ public class MySQLConnector {
             }
 
             //find out which columns are in current table:
-            statement = conn.createStatement();
-            String sql = "select * from sygehus;";
-            ResultSet rs = statement.executeQuery(sql);
-            ResultSetMetaData rsMetaData = rs.getMetaData();
+            /*ResultSetMetaData rsMetaData = rs.getMetaData();
             int numberOfColumns = rsMetaData.getColumnCount();
 
             // get the column names; column indexes start from 1
@@ -46,14 +39,13 @@ public class MySQLConnector {
                 // Get the name of the column's table name
                 String tableName = rsMetaData.getTableName(i);
                 System.out.println("column name=" + columnName);
-            }
+            }*/
 
 
             //db.getHomeData();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-
+        return conn;
     }
 }
