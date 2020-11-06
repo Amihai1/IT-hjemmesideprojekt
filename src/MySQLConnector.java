@@ -17,21 +17,20 @@ public class MySQLConnector {
             System.out.println("valg af funktion:"+valg);
             if(valg==1){
             try {
-                int cpr = Integer.parseInt(askForcpr());
+                int cpr = askForcpr();
                 System.out.println("Brugeren tastede: " + cpr);
                 String kode = MySQLConnector.askForkode();
                 System.out.println("Brugeren indtastede: " + kode);
-                int patientid = Integer.parseInt(askForPatientid());
-                System.out.println("Brugeren indtastede: " + patientid);
+
 
                 // Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/?serverTimezone=Europe/Amsterdam&amp", "root", "Johari");
-                String query = " insert into login (cpr, kode, patientid)"
-                        + " values (?, ?, ?)";
+                String query = " insert into login (cpr, kode)"
+                        + " values (?, ?)";
                 // create the mysql insert preparedstatement
                 PreparedStatement preparedStmt = conn.prepareStatement(query);
                 preparedStmt.setInt(1, cpr);
                 preparedStmt.setString(2, kode);
-                preparedStmt.setInt(3, patientid);
+
                 // execute the preparedstatement
                 preparedStmt.execute();
                 conn.close();
@@ -50,7 +49,7 @@ public class MySQLConnector {
                     int cpr = rs.getInt("cpr");
                     String kode = rs.getString("kode");
                     int id = rs.getInt("patientid");
-                    System.out.format("%s,%s,%s\n", cpr, kode, id);
+                    System.out.format("%s,%s,%s\n", id, cpr, kode);
                 }
 
             } catch (SQLException e) {
@@ -92,10 +91,10 @@ public class MySQLConnector {
         return valg;
     }
 
-    public static String askForcpr() {
+    public static int askForcpr() {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Indtast CPR");
-        String cpr = keyboard.nextLine();
+        int cpr = keyboard.nextInt();
         return cpr;
     }
 
