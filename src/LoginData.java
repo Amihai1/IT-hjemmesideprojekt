@@ -6,9 +6,9 @@ public class LoginData {
         for (int i = 0; i < 1; i++) {
             try {
                 PreparedStatement statement = conn.prepareStatement("INSERT INTO login VALUES(?,?,?);");
-                statement.setString(1, "0101010101");
-                statement.setString(2, "kodeord");
-                statement.setInt(3, 1);
+                statement.setString(1, "0303030303");
+                statement.setString(2, "kennet");
+                statement.setInt(3, 3);
 
                 statement.execute();
             } catch (SQLException e) {
