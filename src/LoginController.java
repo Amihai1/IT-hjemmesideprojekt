@@ -1,5 +1,3 @@
-package Http;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,30 +13,34 @@ import javax.servlet.http.HttpServletResponse;
 
 
 @WebServlet("/LoginController")
-class LoginController extends HttpServlet {
+public class LoginController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String un = request.getParameter("CPR");
-        String pw = request.getParameter("PSW");
+        String pw = request.getParameter("psw");
 
 // Connect to mysql(mariadb) and verify username password
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");
 // loads driver
-            Connection c = DriverManager.getConnection("jdbc:mariadb://localhost:3306/test", "root", "root"); // gets a new connection
+            Connection c = DriverManager.getConnection("jdbc:mariadb://192.168.239.20:3306/myuser?", "oskar", "123456789"); // gets a new connection
 
-            PreparedStatement ps = c.prepareStatement("select userName,pass from student where userName=? and pass=?");
+            PreparedStatement ps = c.prepareStatement("select cpr,kode from login where cpr=? and kode=?");
             ps.setString(1, un);
             ps.setString(2, pw);
 
+
+
             ResultSet rs = ps.executeQuery();
+
+
 
             while (rs.next()) {
                 response.sendRedirect("Brugerside.html");
                 return;
             }
-            response.sendRedirect("error.html");
+            response.sendRedirect("FAQ.html");
             return;
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();

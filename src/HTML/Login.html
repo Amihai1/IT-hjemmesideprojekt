@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+pageEncoding="utf-8"%>
+<DOCTYPE html>
 <html>
 <title>W3.CSS Template</title>
 <meta charset="UTF-8">
@@ -34,22 +37,27 @@
 
     </div>
 </div>
-<form action="Brugerside.html" method="get">
+
+
+<form action="LoginController" method="post">
     <div class="container1">
-        <label class="uname"><b>CPR-nummer</b></label>
-        <input type="text" style="font-size: 20px"  placeholder="Indtast CPR-nummer" name="uname" required>
-        <label class="psw"><b>Kodeord</b></label>
-        <input type="password" style="font-size: 20px" placeholder="Indtast Kodeord" name="psw" required>
+
+            <label class="uname"><b>CPR-nummer</b></label>
+            <input type="text" style="font-size: 20px"  placeholder="Indtast CPR-nummer" name="CPR" required>
+            <label class="psw"><b>Kodeord</b></label>
+           <input type="password" style="font-size: 20px" placeholder="Indtast Kodeord" name="psw" required>
     </div>
 
     </div>
     <div class="container2">
-        <button style="color: black" type="submit">Login</button>
+        <button style="color: black" type="submit" > Log in </button>
         <label>
             <input type="checkbox" checked="checked" name="remember"> <span>Husk mig</span>
         </label>
         <span class="psw">Glemt <a href="#">Kodeord?</a></span>
     </div>
+</form>
+
     <footer class="w3-center">
         <br>
         <img src="../billeder/Skærmbillede%202020-09-26%20kl.%2010.40.12.png" height="100" width="150"/>
