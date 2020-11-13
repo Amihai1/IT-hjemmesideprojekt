@@ -13,6 +13,7 @@ public class MySQLConnector {
     public static void main(String[] args) {
         Connection conn = getConn();
         try{
+            /*
             int valg = valgAfKode();
             System.out.println("valg af funktion:"+valg);
             if(valg==1){
@@ -39,8 +40,10 @@ public class MySQLConnector {
                 // System.err.println(e.getMessage());
             }}
 
-            if(valg ==2){
-            try {
+             */
+
+            //if(valg ==2){
+
                 PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM login");
                 ResultSet rs = preparedStatement.executeQuery();
                 ResultSetMetaData rsMatadata = rs.getMetaData();
@@ -54,13 +57,10 @@ public class MySQLConnector {
 
             } catch (SQLException e) {
                 e.printStackTrace();
-            }}
-        } catch (Exception e) {
-            e.printStackTrace();
+            }
         }
-    }
 
-    public static Connection getConn() {
+        public static Connection getConn() {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
 
@@ -83,7 +83,7 @@ public class MySQLConnector {
         }
         return conn;
     }
-
+/*
     public static int valgAfKode() {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("tast 1 for indsæt data. tast 2 for hente data:");
@@ -111,5 +111,7 @@ public class MySQLConnector {
         String patientid = keyboard.nextLine();
         return patientid;
     }
+
+ */
 
 }

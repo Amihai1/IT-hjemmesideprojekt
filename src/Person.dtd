@@ -1,0 +1,5 @@
+
+<!ELEMENT Person (cpr,password,patientid) >
+        <!ELEMENT password (#PCDATA) >
+        <!ELEMENT cpr (#PCDATA)>
+        <!ELEMENT patientid (#PCDATA)>

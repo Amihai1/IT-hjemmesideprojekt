@@ -1,0 +1,66 @@
+
+.collapsible {
+    background-color: #f2f2f2;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    font-size: 24px;
+    border-style: groove
+}
+
+.row1  {
+    margin-top: 130px;
+}
+.card1 {
+    position: relative;
+    text-align: center;
+    color: black;
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.column1 {
+    float: left;
+    width: 33%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+    .column1 {
+        width: auto;
+        display: block;
+    }
+}
+.card1 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container1 {
+    padding: 0 16px;
+}
+
+.container1::after, .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+img {
+    opacity: 0.5;
+}
+
+
+.footer a{
+
+    font-size: 24px;
+}
