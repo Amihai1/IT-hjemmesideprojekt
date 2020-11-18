@@ -1,11 +1,13 @@
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Scanner;
 
 
 public class MySQLConnector {
     static String url = "jdbc:mariadb://192.168.239.20:3306/myuser?";
     private static Connection conn = null;
+    private static int Cpr;
 
     //private static Statement statement = null;
     //private PreparedStatement prep = null;
@@ -13,6 +15,7 @@ public class MySQLConnector {
     public static void main(String[] args) {
         Connection conn = getConn();
         try{
+            /*
             int valg = valgAfKode();
             System.out.println("valg af funktion:"+valg);
             if(valg==1){
@@ -39,8 +42,9 @@ public class MySQLConnector {
                 // System.err.println(e.getMessage());
             }}
 
-            if(valg ==2){
-            try {
+             */
+
+            //if(valg ==2){
                 PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM login");
                 ResultSet rs = preparedStatement.executeQuery();
                 ResultSetMetaData rsMatadata = rs.getMetaData();
@@ -52,15 +56,13 @@ public class MySQLConnector {
                     System.out.format("%s,%s,%s\n", id, cpr, kode);
                 }
 
+
             } catch (SQLException e) {
                 e.printStackTrace();
-            }}
-        } catch (Exception e) {
-            e.printStackTrace();
+            }
         }
-    }
 
-    public static Connection getConn() {
+        public static Connection getConn() {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
 
@@ -83,13 +85,14 @@ public class MySQLConnector {
         }
         return conn;
     }
-
+/*
     public static int valgAfKode() {
         Scanner keyboard = new Scanner(System.in);
         System.out.println("tast 1 for indsæt data. tast 2 for hente data:");
         int valg = keyboard.nextInt();
         return valg;
     }
+    */
 
     public static int askForcpr() {
         Scanner keyboard = new Scanner(System.in);

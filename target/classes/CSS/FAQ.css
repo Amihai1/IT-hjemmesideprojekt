@@ -1,0 +1,29 @@
+.collapsible {
+    background-color: #f2f2f2;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border-style: groove;
+    text-align: left;
+    outline: none;
+    font-size: 24px;
+    font-weight: bold;
+}
+.active, .collapsible:hover {
+    background-color:  #DCDCDC;
+}
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+.content p{
+    font-weight: bold;
+    font-size: 20px;
+}
+.mySlides {
+    display: none
+}
+

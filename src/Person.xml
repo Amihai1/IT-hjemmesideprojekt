@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Person SYSTEM "Person.dtd">
+<Person>
+    <cpr></cpr>
+    <password></password>
+    <patientid></patientid>
+</Person>
