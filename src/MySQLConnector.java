@@ -1,11 +1,13 @@
 import java.sql.*;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Scanner;
 
 
 public class MySQLConnector {
     static String url = "jdbc:mariadb://192.168.239.20:3306/myuser?";
     private static Connection conn = null;
+    private static int Cpr;
 
     //private static Statement statement = null;
     //private PreparedStatement prep = null;
@@ -43,7 +45,6 @@ public class MySQLConnector {
              */
 
             //if(valg ==2){
-
                 PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM login");
                 ResultSet rs = preparedStatement.executeQuery();
                 ResultSetMetaData rsMatadata = rs.getMetaData();
@@ -54,6 +55,7 @@ public class MySQLConnector {
                     int id = rs.getInt("patientid");
                     System.out.format("%s,%s,%s\n", id, cpr, kode);
                 }
+
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -90,6 +92,7 @@ public class MySQLConnector {
         int valg = keyboard.nextInt();
         return valg;
     }
+    */
 
     public static int askForcpr() {
         Scanner keyboard = new Scanner(System.in);
@@ -111,7 +114,5 @@ public class MySQLConnector {
         String patientid = keyboard.nextLine();
         return patientid;
     }
-
- */
 
 }
