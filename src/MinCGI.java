@@ -105,6 +105,7 @@ public class MinCGI {
                 "</div>\n" +
                 "</p1>");
 
+
         System.out.println("</HEAD>");
         System.out.println("<BODY>");
 
@@ -130,7 +131,7 @@ public class MinCGI {
                 "    <div class=\"row1\">\n" +
                 "    <div class=\"column1\">\n" +
                 "        <div class=\"card1\">\n" +
-                "            <form action=\"/Aftaler.html\"><button type=\"submit\"><img src=\"//images01.nicepage.io/fd/64/fd645fffe75a3b862c96027a9831be32.jpeg\"\n" +
+                "            <form action=\"/cgi-bin/MinCGI\" method=\"post\"><button type=\"submit\"><img src=\"//images01.nicepage.io/fd/64/fd645fffe75a3b862c96027a9831be32.jpeg\"\n" +
                 "                 alt=\"Aftaler\" style=\"width:100%\">\n" +
                 "            <div class=\"centered\">Aftaler</div>\n" +
                 "            </button></form>\n" +

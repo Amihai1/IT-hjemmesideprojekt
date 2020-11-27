@@ -1,32 +1,48 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class CGIAftaler {
     static String url2 = "jdbc:mariadb://192.168.239.20:3306/myuser";
     private static Connection conn = null;
+    private static Statement statement = null;
+    private static String Patientid = null;
+    private static String dato = null;
+    private static String varighed = null;
+    private static String lokale = null;
+    private static String behandling = null;
+    private static String hospital = null;
 
     public static void main(String[] args) {
         showHead();
-        showBody();
-        showTail();
+
         try {
 
             Class.forName("org.mariadb.jdbc.Driver");
             String user, pass;
             user = "oskar";
             pass = "123456789";
+            int patientid = 1;
             conn = DriverManager.getConnection(url2, user, pass);
-            System.out.println("im in");
-
-
+            String sqlFindaftaler = "select * from aftaler where patientid ='" + patientid + "'";
+            statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sqlFindaftaler);
+            while (rs.next()) {
+                Patientid = String.valueOf(rs.getInt("patientid"));
+                dato =rs.getString("dato");
+                varighed = rs.getString("varighed");
+                lokale = rs.getString("lokale");
+                behandling = rs.getString("behandling");
+                hospital = rs.getString("hospital");
+                showBody();
+            }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+        showTail();
     }
+
     private static void showHead() {
         System.out.println("Content-Type: text/html");
         System.out.println();
@@ -42,7 +58,7 @@ public class CGIAftaler {
         System.out.println("<META http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">");
         System.out.println("<META http-equiv=\"Pragma\" content=\"no-cache\">");
         System.out.println("<META http-equiv=\"expires\" content=\"0\">");
-        System.out.println("<form action=\"/cgi-bin/CGIGet\"></form>\n"+
+        System.out.println("<form action=\"/cgi-bin/CGIGet\"></form>\n" +
                 "<p1>\n" +
                 "<!-- Links (sit on top) -->\n" +
                 "<div class=\"w3-top topnav\">\n" +
@@ -59,54 +75,63 @@ public class CGIAftaler {
                 "\n" +
                 "    </div>\n" +
                 "</div>\n" +
-                "</p1>");
+                "</p1>" +
+                "<style>\n" +
+                "            table {\n" +
+                "                font-family: arial, sans-serif;\n" +
+                "                border-collapse: collapse;\n" +
+                "                width: 100%;\n" +
+                "            }\n" +
+                "\n" +
+                "            td, th {\n" +
+                "                border: 1px solid #dddddd;\n" +
+                "                text-align: left;\n" +
+                "                padding: 8px;\n" +
+                "            }\n" +
+                "\n" +
+                "            tr:nth-child(even) {\n" +
+                "                background-color: #dddddd;\n" +
+                "            }\n" +
+                "table{\n" +
+                "                margin-top: 80px;\n" +
+                "            }\n" +
+                "        </style>");
 
         System.out.println("</HEAD>");
         System.out.println("<BODY>");
 
     }
+
     private static void showBody() {
-        System.out.println("<h2>HTML Table</h2>\n" +
+        System.out.println(
                 "\n" +
-                "<table>\n" +
-                "    <tr>\n" +
-                "        <th>Aendre/slet</th>\n" +
-                "        <th>Dato</th>\n" +
-                "        <th>Hospital</th>\n" +
-                "        <th>Aftale</th>\n" +
-                "    </tr>\n" +
-                "    <tr>\n" +
-                "        <td><form action=\"/cgi-bin/CGI\"></form><button>Slet/Aendre</button></td>\n" +
-                "        <td>11-11-11</td>\n" +
-                "        <td>Frederiksberg Hospital</td>\n" +
-                "        <td>Du skal have tjekket din knop paa P*kken</td>\n" +
-                "    </tr>\n" +
-                "    <tr>\n" +
-                "        <td><button>Slet/Aendre</button></td>\n" +
-                "        <td>11-11-11</td>\n" +
-                "        <td>Frederiksberg Hospital</td>\n" +
-                "        <td></td>\n" +
-                "    </tr>\n" +
-                "    <tr>\n" +
-                "        <td><button>Slet/Aendre</button></td>\n" +
-                "        <td>11-11-11</td>\n" +
-                "        <td>Frederiksberg Hospital</td>\n" +
-                "        <td></td>\n" +
-                "    </tr>\n" +
-                "    <tr>\n" +
-                "        <td><button>Slet/Aendre</button></td>\n" +
-                "        <td>11-11-11</td>\n" +
-                "        <td>Frederiksberg Hospital</td>\n" +
-                "        <td></td>\n" +
-                "    </tr>\n" +
-                "\n" +
-                "</table>\n");
+                        "<table>\n" +
+                        "    <tr>\n" +
+                        "        <th>Aendre/slet</th>\n" +
+                        "        <th>Patientid</th>\n" +
+                        "        <th>Dato</th>\n" +
+                        "        <th>Varighed</th>\n" +
+                        "        <th>Hospital</th>\n" +
+                        "        <th>Lokale</th>\n" +
+                        "        <th>Behandling</th>\n" +
+                        "    </tr>\n" +
+                        "    <tr>\n" +
+                        "        <td><button>Slet/Aendre</button></td>\n" +
+                        "        <td>" + Patientid + "</td>\n" +
+                        "        <td>" + dato + "</td>\n" +
+                        "        <td>" + varighed + "</td>\n" +
+                        "        <td>" + hospital + "</td>\n" +
+                        "        <td>" + lokale + "</td>\n" +
+                        "        <td>" + behandling + "</td>\n" +
+                        "    </tr>\n" +
+                        "\n" +
+                        "</table>\n");
 
     }
+
     private static void showTail() {
         System.out.println("</BODY>\n</HTML>");
     }
-
 
 
 }
