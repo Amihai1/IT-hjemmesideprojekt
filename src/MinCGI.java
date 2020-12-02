@@ -25,6 +25,7 @@ public class MinCGI {
 
 
     public static void main(String[] args) {
+
         showHead();
         try {
             Person person = new Person();
@@ -56,14 +57,11 @@ public class MinCGI {
             kodepost = clientResponse[1].split("=");
             kodeTilDb = kodepost[1];
 
-            if (findUser(cprTilDb,kodeTilDb)!=null) {
-                patientid = findUser(cprTilDb,kodeTilDb);
+            if (findUser(cprTilDb, kodeTilDb) != null) {
+                patientid = findUser(cprTilDb, kodeTilDb);
                 person.setPatientid(Integer.parseInt(patientid));
                 showBody();
             }
-
-
-
 
 
         } catch (IOException | SQLException | ClassNotFoundException ioe) {
@@ -72,7 +70,6 @@ public class MinCGI {
         showTail();
 
     }
-
 
 
     private static void showHead() {
@@ -90,7 +87,7 @@ public class MinCGI {
         System.out.println("<META http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">");
         System.out.println("<META http-equiv=\"Pragma\" content=\"no-cache\">");
         System.out.println("<META http-equiv=\"expires\" content=\"0\">");
-        System.out.println("<form action=\"/cgi-bin/CGIGet\"></form>\n"+
+        System.out.println("<form action=\"/cgi-bin/CGIGet\"></form>\n" +
                 "<p1>\n" +
                 "<!-- Links (sit on top) -->\n" +
                 "<div class=\"w3-top topnav\">\n" +
@@ -180,6 +177,27 @@ public class MinCGI {
 
     private static void showTail() {
         System.out.println("</BODY>\n</HTML>");
+    }
+
+    static void showError() {
+        System.out.println("Content-Type: text/html");
+        System.out.println();
+        System.out.println("<!DOCTYPE HTML PUBLIC \" -//W3C//DTD HTML 3.2//EN\" >");
+                System.out.println("<HTML>");
+        System.out.println("<HEAD>");
+        System.out.println("<TITLE>Fejl i oprettelse! application</TITLE>");
+        System.out.println("<META http-equiv=\"content - type\" content=\"text / html; charset = UTF - 8 \">");
+        System.out.println("<META http-equiv=\"Pragma\" content=\"no - cache\">");
+        System.out.println("<script>");
+
+        System.out.println("function myFunction() {\n");
+        System.out.println("alert('Forkert brugernavn/password');");
+        System.out.println("})");
+        System.out.println("<meta http-equiv=\"refresh\" content=\"5; URL=http://www.su0.eduhost.dk/Login\" />");
+                System.out.println("</script>");
+        System.out.println("</HEAD>");
+        System.out.println("<BODY  onload=\"myFunction()\">");
+
     }
 
     private static String findUser(String cprTilDb, String kodeTilDb) throws SQLException, ClassNotFoundException, IOException {
