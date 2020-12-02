@@ -18,6 +18,7 @@ public class MinCGI {
     private static String kodeTilDb;
     private static String Cpr = null;
     private static String Kode = null;
+    private static String patientid = null;
 
 // here we use DBComm as a classname, if you use this method, make sure to change it to whatever class you use the
     // logger from
@@ -26,6 +27,7 @@ public class MinCGI {
     public static void main(String[] args) {
         showHead();
         try {
+            Person person = new Person();
             Class.forName("org.mariadb.jdbc.Driver");
 
             //mysql skal  ndres senere til MariaDB, localhost til en IPaddresse -
@@ -55,6 +57,8 @@ public class MinCGI {
             kodeTilDb = kodepost[1];
 
             if (findUser(cprTilDb,kodeTilDb)!=null) {
+                patientid = findUser(cprTilDb,kodeTilDb);
+                person.setPatientid(Integer.parseInt(patientid));
                 showBody();
             }
 
@@ -165,6 +169,7 @@ public class MinCGI {
                 "        <footer class=\"w3-center\">\n" +
                 "            <br>\n" +
                 "            <img src=\"../billeder/Skærmbillede%202020-09-26%20kl.%2010.40.12.png\" height=\"100\" width=\"150\"/>\n" +
+                "            </br>\n" +
                 "            <p>Powered by DTU Sundtek</p>\n" +
                 "        </footer>\n" +
                 "\n" +
@@ -179,13 +184,15 @@ public class MinCGI {
 
     private static String findUser(String cprTilDb, String kodeTilDb) throws SQLException, ClassNotFoundException, IOException {
         String output = "";
-        String sqlFindUser = "select cpr,kode from login where cpr ='" + cprTilDb + "' and kode='" + kodeTilDb + "'";
+        int Patientid = 0;
+        String sqlFindUser = "select * from login where cpr ='" + cprTilDb + "' and kode='" + kodeTilDb + "'";
         try {
             statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sqlFindUser);
             rs.next();
             Cpr = String.valueOf(rs.getInt(("cpr")));
             Kode = rs.getString("kode");
+            Patientid = rs.getInt("patientid");
             if (Cpr.equals(cprTilDb) && Kode.equals(kodeTilDb)) {
 
             }

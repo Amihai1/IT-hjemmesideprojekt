@@ -12,9 +12,9 @@ public class JavaTilXML {
             XmlMapper xmlMapper = new XmlMapper(); //import that shit
             xmlMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
             Person person = new Person();
-            person.setCpr("1212121212");
-            person.setPassword("kalaha");
-            person.setPatientid(2);
+            //person.setCpr("1212121212");
+            //person.setPassword("kalaha");
+            //person.setPatientid(2);
 
             String xmlstring = xmlMapper.writeValueAsString(person);
             System.out.println(xmlstring);

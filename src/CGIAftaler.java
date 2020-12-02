@@ -10,17 +10,18 @@ public class CGIAftaler {
     private static String lokale = null;
     private static String behandling = null;
     private static String hospital = null;
+    private static int patientid= 0;
 
     public static void main(String[] args) {
         showHead();
 
         try {
-
             Class.forName("org.mariadb.jdbc.Driver");
             String user, pass;
             user = "oskar";
             pass = "123456789";
-            int patientid = 1;
+            Person person = new Person();
+            patientid = 1;
             conn = DriverManager.getConnection(url2, user, pass);
             String sqlFindaftaler = "select * from aftaler where patientid ='" + patientid + "'";
             statement = conn.createStatement();
@@ -95,26 +96,29 @@ public class CGIAftaler {
                 "table{\n" +
                 "                margin-top: 80px;\n" +
                 "            }\n" +
-                "        </style>");
+                "        </style>" +
+                "\n" +
+                "<table>\n" +
+                "    <tr>\n" +
+                "        <th>Aendre/slet</th>\n" +
+                "        <th>Patientid</th>\n" +
+                "        <th>Dato</th>\n" +
+                "        <th>Varighed</th>\n" +
+                "        <th>Hospital</th>\n" +
+                "        <th>Lokale</th>\n" +
+                "        <th>Behandling</th>\n" +
+                "    </tr>\n");
 
         System.out.println("</HEAD>");
         System.out.println("<BODY>");
+
 
     }
 
     private static void showBody() {
         System.out.println(
                 "\n" +
-                        "<table>\n" +
-                        "    <tr>\n" +
-                        "        <th>Aendre/slet</th>\n" +
-                        "        <th>Patientid</th>\n" +
-                        "        <th>Dato</th>\n" +
-                        "        <th>Varighed</th>\n" +
-                        "        <th>Hospital</th>\n" +
-                        "        <th>Lokale</th>\n" +
-                        "        <th>Behandling</th>\n" +
-                        "    </tr>\n" +
+
                         "    <tr>\n" +
                         "        <td><button>Slet/Aendre</button></td>\n" +
                         "        <td>" + Patientid + "</td>\n" +
@@ -124,13 +128,13 @@ public class CGIAftaler {
                         "        <td>" + lokale + "</td>\n" +
                         "        <td>" + behandling + "</td>\n" +
                         "    </tr>\n" +
-                        "\n" +
-                        "</table>\n");
+                        "\n");
 
     }
 
     private static void showTail() {
-        System.out.println("</BODY>\n</HTML>");
+        System.out.println("</table>\n" +
+                "</BODY>\n</HTML>");
     }
 
 
