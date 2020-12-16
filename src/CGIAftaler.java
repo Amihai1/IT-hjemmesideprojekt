@@ -20,7 +20,6 @@ public class CGIAftaler {
             String user, pass;
             user = "oskar";
             pass = "123456789";
-            Person person = new Person();
             patientid = 1;
             conn = DriverManager.getConnection(url2, user, pass);
             String sqlFindaftaler = "select * from aftaler where patientid ='" + patientid + "'";

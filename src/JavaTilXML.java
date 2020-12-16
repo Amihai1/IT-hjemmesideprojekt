@@ -1,9 +1,8 @@
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.fasterxml.jackson.databind.SerializationConfig;
+
 import java.io.File;
 import java.io.FileWriter;
-import java.io.Serializable;
 
 
 public class JavaTilXML {
@@ -11,10 +10,10 @@ public class JavaTilXML {
         try{
             XmlMapper xmlMapper = new XmlMapper(); //import that shit
             xmlMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);
-            Person person = new Person();
-            //person.setCpr("1212121212");
-            //person.setPassword("kalaha");
-            //person.setPatientid(2);
+            PersonDTO person = new PersonDTO();
+            person.setCpr("1212121212");
+            person.setPassword("kalaha");
+            person.setPatientid(2);
 
             String xmlstring = xmlMapper.writeValueAsString(person);
             System.out.println(xmlstring);
@@ -30,7 +29,4 @@ public class JavaTilXML {
         }
 
     }
-
-
-
 }

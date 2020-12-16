@@ -14,7 +14,7 @@ public class MySQLConnector {
 
     public static void main(String[] args) {
         Connection conn = getConn();
-        try{
+        try {
             /*
             int valg = valgAfKode();
             System.out.println("valg af funktion:"+valg);
@@ -45,40 +45,36 @@ public class MySQLConnector {
              */
 
             //if(valg ==2){
-                PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM login");
-                ResultSet rs = preparedStatement.executeQuery();
-                ResultSetMetaData rsMatadata = rs.getMetaData();
-                int column = rsMatadata.getColumnCount();
-                while (rs.next()) {
-                    int cpr = rs.getInt("cpr");
-                    String kode = rs.getString("kode");
-                    int id = rs.getInt("patientid");
-                    System.out.format("%s,%s,%s\n", id, cpr, kode);
-                }
-
-
-            } catch (SQLException e) {
-                e.printStackTrace();
+            PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM login");
+            ResultSet rs = preparedStatement.executeQuery();
+            ResultSetMetaData rsMatadata = rs.getMetaData();
+            int column = rsMatadata.getColumnCount();
+            while (rs.next()) {
+                int cpr = rs.getInt("cpr");
+                String kode = rs.getString("kode");
+                int id = rs.getInt("patientid");
+                System.out.format("%s,%s,%s\n", id, cpr, kode);
             }
-        }
 
-        public static Connection getConn() {
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Connection getConn() {
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-
             //mysql skal  ndres senere til MariaDB, localhost til en IPaddresse -
             String user, pass;
             user = "oskar";
             pass = "123456789";
             conn = DriverManager.getConnection(url, user, pass);
             if (conn != null) {
-
                 System.out.println("Im in");
             } else {
                 System.out.println("connection not made");
             }
-
-
             //db.getHomeData();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

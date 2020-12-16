@@ -28,9 +28,7 @@ public class MinCGI {
 
         showHead();
         try {
-            Person person = new Person();
             Class.forName("org.mariadb.jdbc.Driver");
-
             //mysql skal  ndres senere til MariaDB, localhost til en IPaddresse -
             String user, pass;
             user = "oskar";
@@ -59,7 +57,6 @@ public class MinCGI {
 
             if (findUser(cprTilDb, kodeTilDb) != null) {
                 patientid = findUser(cprTilDb, kodeTilDb);
-                person.setPatientid(Integer.parseInt(patientid));
                 showBody();
             }
 

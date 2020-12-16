@@ -68,7 +68,27 @@ public class CGIkontakt {
             }
 
         } catch (IOException | SQLException | ClassNotFoundException ioe) {
-            System.out.println("/var/www/html/index.html");
+            System.out.println("<P>IOException reading POST data: " + ioe + "</P>");
         }
+    }
+    static void showError() {
+        System.out.println("Content-Type: text/html");
+        System.out.println();
+        System.out.println("<!DOCTYPE HTML PUBLIC \" -//W3C//DTD HTML 3.2//EN\" >");
+        System.out.println("<HTML>");
+        System.out.println("<HEAD>");
+        System.out.println("<TITLE>Fejl i oprettelse! application</TITLE>");
+        System.out.println("<META http-equiv=\"content - type\" content=\"text / html; charset = UTF - 8 \">");
+        System.out.println("<META http-equiv=\"Pragma\" content=\"no - cache\">");
+        System.out.println("<script>");
+
+        System.out.println("function myFunction() {\n");
+        System.out.println("alert('Forkert brugernavn/password');");
+        System.out.println("})");
+        System.out.println("<meta http-equiv=\"refresh\" content=\"5; URL=http://www.su0.eduhost.dk\" />");
+        System.out.println("</script>");
+        System.out.println("</HEAD>");
+        System.out.println("<BODY  onload=\"myFunction()\">");
+
     }
 }
