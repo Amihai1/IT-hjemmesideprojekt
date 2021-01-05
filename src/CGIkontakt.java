@@ -19,6 +19,8 @@ public class CGIkontakt {
     static String[] data;
 
     public static void main(String[] args) throws SQLException, IOException {
+        showError();
+        showTail();
         try {
             Class.forName("org.mariadb.jdbc.Driver");
 
@@ -51,7 +53,7 @@ public class CGIkontakt {
             String[] beskedpost;
             beskedpost = clientResponse[2].split("=");
             besked = beskedpost[1];
-            System.out.println(navn+" "+mail+" "+besked);
+
             try {
                 String sqlFindUser = "INSERT INTO kontakt(navn,mail,emne) VALUES(?,?,?)";
                 try {
@@ -67,9 +69,12 @@ public class CGIkontakt {
                 e.printStackTrace();
             }
 
+
         } catch (IOException | SQLException | ClassNotFoundException ioe) {
             System.out.println("<P>IOException reading POST data: " + ioe + "</P>");
         }
+
+
     }
     static void showError() {
         System.out.println("Content-Type: text/html");
@@ -80,15 +85,13 @@ public class CGIkontakt {
         System.out.println("<TITLE>Fejl i oprettelse! application</TITLE>");
         System.out.println("<META http-equiv=\"content - type\" content=\"text / html; charset = UTF - 8 \">");
         System.out.println("<META http-equiv=\"Pragma\" content=\"no - cache\">");
-        System.out.println("<script>");
-
-        System.out.println("function myFunction() {\n");
-        System.out.println("alert('Forkert brugernavn/password');");
-        System.out.println("})");
-        System.out.println("<meta http-equiv=\"refresh\" content=\"5; URL=http://www.su0.eduhost.dk\" />");
-        System.out.println("</script>");
+        System.out.println("<meta http-equiv=\"refresh\" content=\"0; URL=http://130.226.195.37:39080\"/>");
         System.out.println("</HEAD>");
-        System.out.println("<BODY  onload=\"myFunction()\">");
+        System.out.println("<BODY>");
 
     }
+    private static void showTail() {
+        System.out.println("</BODY>\n</HTML>");
+    }
+
 }

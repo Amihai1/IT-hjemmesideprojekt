@@ -1,12 +1,14 @@
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
+import javax.servlet.http.Cookie;
 import java.io.File;
 import java.io.FileWriter;
 
 
 public class JavaTilXML {
     public static void main(String[] args) {
+
         try{
             XmlMapper xmlMapper = new XmlMapper(); //import that shit
             xmlMapper.disable(SerializationFeature.FAIL_ON_EMPTY_BEANS);

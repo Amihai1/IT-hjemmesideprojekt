@@ -20,7 +20,8 @@ public class CGIAftaler {
             String user, pass;
             user = "oskar";
             pass = "123456789";
-            patientid = 1;
+           patientid =1;
+
             conn = DriverManager.getConnection(url2, user, pass);
             String sqlFindaftaler = "select * from aftaler where patientid ='" + patientid + "'";
             statement = conn.createStatement();
@@ -44,6 +45,7 @@ public class CGIAftaler {
     }
 
     private static void showHead() {
+
         System.out.println("Content-Type: text/html");
         System.out.println();
         System.out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\">");
@@ -54,7 +56,7 @@ public class CGIAftaler {
                 "<link rel=\"stylesheet\" href=\"../CSS/standard.css\">\n" +
                 "<link rel=\"stylesheet\" href=\"../CSS/Brugerside.css\">");
         System.out.println("<HEAD>");
-        System.out.println("<TITLE>Loginvalidation application</TITLE>");
+        System.out.println("<TITLE>Aftaler</TITLE>");
         System.out.println("<META http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">");
         System.out.println("<META http-equiv=\"Pragma\" content=\"no-cache\">");
         System.out.println("<META http-equiv=\"expires\" content=\"0\">");

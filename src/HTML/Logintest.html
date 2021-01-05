@@ -44,7 +44,7 @@
 
     </div>
     <div class="container2">
-        <button style="color: black" type="submit" onclick="validate()">Login</button>
+        <button style="color: black" type="submit" onclick="authentication()">Login</button>
         <label>
             <input type="checkbox" checked="checked" name="remember"> <span>Husk mig</span>
         </label>
@@ -65,10 +65,10 @@
             conn = new MySQLConnector();
 
         }
-        function validate(){
+        function authentication(){
             var username = document.getElementById("uname").value;
             var password = document.getElementById("psw").value;
-            if ( username == "" && password == "formget"){
+            if ( username == "formget   " && password == "formget"){
                 open("Brugerside.html")
                 window.location = "Brugerside.html"; // Redirecting to other page.
                 return false;

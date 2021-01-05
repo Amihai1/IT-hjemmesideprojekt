@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../CSS/standard.css">
+<link rel="stylesheet" href="../CSS/Brugerside.css">
+<HEAD>
+    <TITLE>Aftaler</TITLE>
+    <META http-equiv="content-type" content="text/html; charset=UTF-8">
+    <META http-equiv="Pragma" content="no-cache">
+    <META http-equiv="expires" content="0">
+    <form action="/cgi-bin/CGIGet"></form>
+    <p1>
+        <!-- Links (sit on top) -->
+        <div class="w3-top topnav">
+            <div class="w3-row w3-large">
+                <div class="w3-col s3">
+                    <a href="Brugerside.html" class="w3-button w3-block"><i class="fa fa-fw fa-user-o"></i>&nbsp Min Side</a>
+                </div>
+
+                <div class="w3-col s3 w3-right">
+                    <a href="/index.html" class="w3-button w3-block"><i class="fa fa-sign-out" style="color:#ff0000">
+                    </i>&nbsp
+                        Log Ud</a>
+                </div>
+
+            </div>
+        </div>
+    </p1><style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    table{
+        margin-top: 80px;
+    }
+</style>
+</HEAD>
+<body>
+<form action="/cgi-bin/CGILavAftale" method="post">
+    <label>Patient ID</label>
+    <input type="number" name="patientid">
+    <label>Dato og tid</label>
+    <input type="text" name="dato og tid" placeholder="år-måned-dag time:minut">
+</form>
+
+</body>
+
+
+</html>
