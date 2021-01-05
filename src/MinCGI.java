@@ -163,7 +163,7 @@ public class MinCGI {
                     "\n" +
                     "        <footer class=\"w3-center\">\n" +
                     "            <br>\n" +
-                    "            <img src=\"../billeder/Skærmbillede%202020-09-26%20kl.%2010.40.12.png\" height=\"100\" width=\"150\"/>\n" +
+                    "            <img src=\"//Skærmbillede%202020-09-26%20kl.%2010.40.12.png\" height=\"100\" width=\"150\"/>\n" +
                     "            </br>\n" +
                     "            <p>Powered by DTU Sundtek</p>\n" +
                     "        </footer>\n" +
