@@ -10,51 +10,66 @@
     <META http-equiv="content-type" content="text/html; charset=UTF-8">
     <META http-equiv="Pragma" content="no-cache">
     <META http-equiv="expires" content="0">
-   <style>
-    table {
-        font-family: arial, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
 
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
 
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-    table{
-        margin-top: 80px;
-    }
-</style>
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        table {
+            margin-top: 80px;
+        }
+
+        input {
+            font-size: 26px;
+
+        }
+        p{
+            font-size: 24px;
+        }
+    </style>
 </HEAD>
 <body>
 
-    <!-- Links (sit on top) -->
-    <div class="w3-top topnav">
-        <div class="w3-row w3-large">
-            <div class="w3-col s3">
-                <a href="Brugerside.html" class="w3-button w3-block"><i class="fa fa-fw fa-user-o"></i>&nbsp Min Side</a>
-            </div>
-
-            <div class="w3-col s3 w3-right">
-                <a href="" class="w3-button w3-block"><i class="fa fa-sign-out" style="color:#ff0000">
-                </i>&nbsp
-                    Log Ud</a>
-            </div>
-
+<!-- Links (sit on top) -->
+<div class="w3-top topnav">
+    <div class="w3-row w3-large">
+        <div class="w3-col s3">
+            <a href="Brugerside.html" class="w3-button w3-block"><i class="fa fa-fw fa-user-o"></i>&nbsp Min Side</a>
         </div>
+
+        <div class="w3-col s3 w3-right">
+            <a href="" class="w3-button w3-block"><i class="fa fa-sign-out" style="color:#ff0000">
+            </i>&nbsp
+                Log Ud</a>
+        </div>
+
     </div>
+</div>
 <div class="container1">
-<form action="/cgi-bin/CGILavAftale" method="post">
-    <label><p>Patient ID</p></label>
-    <input type="number" name="patientid" required>
-    <label><p>Dato og tid</p></label>
-    <input type="datetime-local" name="dato og tid" placeholder="år-måned-dag time:minut">
-</form>
+    <p><b>Bestil en tid</b></p>
+    <form action="/cgi-bin/CGILavAftale" method="post">
+        <label><p>Patient ID:</p></label>
+        <input type="number" name="patientid" required>
+        <label><p>Dato og tid:</p></label>
+        <input type="datetime-local" name="dato og tid" placeholder="år-måned-dag time:minut" required>
+        <label><p>Varighed:</p></label>
+        <input type="number" name="varighed" required>
+        <label><p>Skade:</p></label>
+        <input type="text" name="skade" placeholder="Beskriv skade kort" maxlength="50" text-size="20px" required>
+        <input type="submit" title="Submit">
+    </form>
 </div>
 </body>
 

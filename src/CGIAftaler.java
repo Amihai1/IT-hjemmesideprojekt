@@ -135,6 +135,7 @@ public class CGIAftaler {
 
     private static void showTail() {
         System.out.println("</table>\n" +
+                "<button><a href=\"/LavAftale.html\">Bestil ny aftale</a></button>\n" +
                 "</BODY>\n</HTML>");
     }
 
