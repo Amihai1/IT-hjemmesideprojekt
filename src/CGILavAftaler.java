@@ -49,6 +49,7 @@ public class CGILavAftaler {
             String[] datopost;
             datopost = clientResponse[1].split("=");
             dato = datopost[1];
+            String nydato = dato.replaceAll("T"," ").replaceAll("%3A",":");
             clientResponse = inputfraCGI.split("&");
             String[] varighedpost;
             varighedpost = clientResponse[2].split("=");
@@ -56,6 +57,7 @@ public class CGILavAftaler {
             String[] skadepost;
             skadepost = clientResponse[3].split("=");
             skade = skadepost[1];
+            String nyskade = skade.replaceAll("\\+"," ");
             String lokale = "716W";
             String hospital = "Odense Universitetshospital";
 
@@ -65,10 +67,10 @@ public class CGILavAftaler {
                 try {
                     prep = conn.prepareStatement(sqlFindUser);
                     prep.setInt(1,Integer.parseInt(patientid));
-                    prep.setString(2,dato);
+                    prep.setString(2, nydato);
                     prep.setString(3,varighed);
                     prep.setString(4,lokale);
-                    prep.setString(5,skade);
+                    prep.setString(5,nyskade);
                     prep.setString(6,hospital);
                     prep.execute();
                 } catch (SQLException throwables) {
