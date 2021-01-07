@@ -1,14 +1,15 @@
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Login</title>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../CSS/standard.css">
-<link rel="stylesheet" href="../CSS/Login.html.css">
+    <title>Personale Login</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../CSS/standard.css">
+        <link rel="stylesheet" href="../CSS/Login.html.css">
 
 
 <body>
@@ -26,7 +27,7 @@
             <a href="FAQ.html" class="w3-button w3-block"><i class="fa fa-fw fa-question-circle-o"></i>&nbsp
                 FAQ</a>
         </div>
-        <div class="w3-col s3 w3-dropdown-hover">       
+        <div class="w3-col s3 w3-dropdown-hover">
             <button class="w3-button w3-mobile" style="height:60px; width: 100%"><a><i
                     class="fa fa-fw fa-address-book-o"></i>&nbsp KONTAKT<i class="fa fa-caret-down"
                                                                            style="text-align: center"></i></a></button>
@@ -37,12 +38,13 @@
         </div>
     </div>
 </div>
-<form action="/cgi-bin/CGIpost"method="post" autocomplete="off">
-    <div class="container1">
-        <h1 style="margin-top: 80px; text-align: center">Bruger Login</h1>
 
-        <label class="uname"><b>CPR-nummer</b></label>
-        <input type="text" style="font-size: 20px"  placeholder="Indtast CPR-nummer" name="uname&" required>
+<form action="/cgi-bin/CGIPersonale"method="post" autocomplete="off">
+    <div class="container1">
+        <h1 style="margin-top: 80px; text-align: center">Personale Login</h1>
+
+        <label class="uname"><b>Personale ID</b></label>
+        <input type="text" style="font-size: 20px"  placeholder="Indtast Personale ID" name="uname&" required>
         <label class="psw"><b>Kodeord</b></label>
         <input type="password" style="font-size: 20px" placeholder="Indtast Kodeord" name="psw" required>
     </div>
