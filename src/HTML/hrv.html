@@ -7,16 +7,16 @@
         google.charts.load('current', {packages: ['corechart', 'line']});
         google.charts.setOnLoadCallback(drawChart);
 
-        function drawChart() {
+        function drawChart(index) {
             var array = new google.visualization.DataTable();
             var data = new google.visualization.DataTable();
 
             data.addColumn('timeofday', 'Time');
             data.addColumn('number', 'HRV');
+
+
             array.addColumn('timeofday', 'Time');
             array.addColumn('number', 'HR')
-
-
 
 
 
@@ -47,6 +47,8 @@
                 [[22, 0, 0], 76], [[22, 5, 0], 72], [[22, 10, 0], 73], [[22, 15, 0], 73], [[22, 20, 0], 72], [[22, 25, 0], 71], [[22, 30, 0], 72], [[22, 35, 0], 71], [[22, 40, 0], 70], [[22, 45, 0], 71], [[22, 50, 0], 72], [[22, 55, 0], 71],
                 [[23, 0, 0], 72], [[23, 5, 0], 71], [[23, 10, 0], 73], [[23, 15, 0], 76], [[23, 20, 0], 80], [[23, 25, 0], 83], [[23, 30, 0], 88], [[23, 35, 0], 92], [[23, 40, 0], 94], [[23, 45, 0], 95], [[23, 50, 0], 94], [[23, 55, 0], 93],
             ]);
+            data.addColumn('number', 'Baseline');
+
         //PULS
             array.addRows([
                 [[0, 0, 0], 60], [[0, 5, 0], 61], [[0, 10, 0], 62], [[0, 15, 0], 61], [[0, 20, 0], 60], [[0, 25, 0], 61], [[0, 30, 0], 62], [[0, 35, 0], 60], [[0, 40, 0], 61], [[0, 45, 0], 61], [[0, 50, 0], 60], [[0, 55, 0], 61],
@@ -74,37 +76,63 @@
                 [[22, 0, 0], 75], [[22, 5, 0], 78], [[22, 10, 0], 80], [[22, 15, 0], 82], [[22, 20, 0], 82], [[22, 25, 0], 81], [[22, 30, 0], 82], [[22, 35, 0], 81], [[22, 40, 0], 82], [[22, 45, 0], 83], [[22, 50, 0], 82], [[22, 55, 0], 84],
                 [[23, 0, 0], 86], [[23, 5, 0], 85], [[23, 10, 0], 84], [[23, 15, 0], 81], [[23, 20, 0], 75], [[23, 25, 0], 71], [[23, 30, 0], 70], [[23, 35, 0], 67], [[23, 40, 0], 63], [[23, 45, 0], 60], [[23, 50, 0], 61], [[23, 55, 0], 60]
             ]);
+            data.addColumn('number', 'Baseline');
+            array.addColumn('number', 'Baseline');
+            array.addColumn('number', 'Baseline');
+
             var options;
             options = {
-                hAxis: {
-                    title: 'Time',
+                hAxis: {title: 'Time',},
+                vAxis: {title: 'HRV', minValue: 0, maxValue: 140, maxHeight: 140,},
 
+                series: {
+                    1: {
+                        targetAxisIndex: 1,     // <-- assign y1 to second y-axis
+                        visibleInLegend: false  // <-- hide from legend
+                    }
                 },
                 vAxis: {
-                    title: 'HRV',
-                    minValue: 0,
-                    maxValue: 140,
-                    maxHeight: 140,
+                    title: '', baseline: 80, baselineColor: 'red',minValue: 0, maxValue: 140, maxHeight: 140,},
 
+                    vAxes: {
+                    1: {
+
+                        textStyle: {
+                            color: 'red'
+                        },
+                        ticks: [80],
+
+                    }
                 }
             };
-            let graf;
-            graf = {
-                hAxis: {
-                    title: 'Time'
-                },
-                vAxis: {
-                    title: 'HR',
-                    minValue: 0,
-                    maxValue: 140,
-                    maxHeight: 140
-                },
-                line:{
-                    color:['red', '#004411', 'Black']
-                }
 
-            }
-            var dataView = new google.visualization
+
+            var graf;
+            graf = {
+                hAxis: {title: 'Time'},
+                vAxis: {title: 'HR', minValue: 0, maxValue: 140, maxHeight: 140},
+
+                series: {
+                    1: {
+                        targetAxisIndex: 1,     // <-- assign y1 to second y-axis
+                        visibleInLegend: false  // <-- hide from legend
+                    }
+                },
+
+                vAxis: {
+                    title: '', baseline: 70, baselineColor: 'red',minValue: 0, maxValue: 140, maxHeight: 140,},
+
+                vAxes: {
+                    1: {
+
+                        textStyle: {
+                            color: 'red'
+                        },
+                        ticks: [70]
+
+                    }
+                }
+            };
 
 
             var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
