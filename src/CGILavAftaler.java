@@ -8,7 +8,7 @@ public class CGILavAftaler {
     static String url2 = "jdbc:mariadb://192.168.239.20:3306/myuser";
     static String url = "jdbc:mariadb://[2001:878:200:4102:20c:f1ff:fe6c:756d]:3306/myuser";
     private static String skade;
-    private static String patientid;
+    private static String cpr;
     private static String dato;
     private static String varighed;
 
@@ -45,7 +45,7 @@ public class CGILavAftaler {
             clientResponse = inputfraCGI.split("&");
             String[] patientidpost;
             patientidpost = clientResponse[0].split("=");
-            patientid = patientidpost[1];
+            cpr = patientidpost[1];
             String[] datopost;
             datopost = clientResponse[1].split("=");
             dato = datopost[1];
@@ -53,7 +53,7 @@ public class CGILavAftaler {
             clientResponse = inputfraCGI.split("&");
             String[] varighedpost;
             varighedpost = clientResponse[2].split("=");
-            varighed = varighedpost[1];
+            varighed = varighedpost[1] + "min";
             String[] skadepost;
             skadepost = clientResponse[3].split("=");
             skade = skadepost[1];
@@ -63,10 +63,10 @@ public class CGILavAftaler {
 
 
             try {
-                String sqlFindUser = "INSERT INTO aftaler(patientid,dato,varighed,lokale,behandling,hospital) VALUES(?,?,?,?,?,?)";
+                String sqlFindUser = "INSERT INTO aftaler(cpr,dato,varighed,lokale,behandling,hospital) VALUES(?,?,?,?,?,?)";
                 try {
                     prep = conn.prepareStatement(sqlFindUser);
-                    prep.setInt(1,Integer.parseInt(patientid));
+                    prep.setInt(1,Integer.parseInt(cpr));
                     prep.setString(2, nydato);
                     prep.setString(3,varighed);
                     prep.setString(4,lokale);
@@ -94,7 +94,7 @@ public class CGILavAftaler {
         System.out.println("<TITLE>Fejl i oprettelse! application</TITLE>");
         System.out.println("<META http-equiv=\"content - type\" content=\"text / html; charset = UTF - 8 \">");
         System.out.println("<META http-equiv=\"Pragma\" content=\"no - cache\">");
-        System.out.println("<meta http-equiv=\"refresh\" content=\"0; URL=http://130.226.195.37:39080\"/>");
+        System.out.println("<meta http-equiv=\"refresh\" content=\"0; URL=http://130.226.195.37:39080/cgi-bin/MinCGI\"/>");
         System.out.println("</HEAD>");
         System.out.println("<BODY>");
 
