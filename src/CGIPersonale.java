@@ -171,7 +171,7 @@ public class CGIPersonale {
         System.out.println("<TITLE>Fejl i oprettelse! application</TITLE>");
         System.out.println("<META http-equiv=\"content - type\" content=\"text / html; charset = UTF - 8 \">");
         System.out.println("<META http-equiv=\"Pragma\" content=\"no - cache\">");
-        System.out.println("<meta http-equiv=\"refresh\" content=\"0; URL=http://130.226.195.37:39080/Login.html\"/>");
+        System.out.println("<meta http-equiv=\"refresh\" content=\"0; URL=http://130.226.195.37:39080/Personalelogin.html\"/>");
         System.out.println("<script>");
         System.out.println("function myFunction() {\n");
         System.out.println("alert('Forkert brugernavn/password');");
@@ -185,13 +185,13 @@ public class CGIPersonale {
     private static String findUser(String idTilDb, String kodeTilDb) throws SQLException, ClassNotFoundException, IOException {
         String output = "";
         int Patientid = 0;
-        String sqlFindUser = "select * from personalelogin where personaleid ='" + idTilDb + "' and kode='" + kodeTilDb + "'";
+        String sqlFindUser = "select * from personalelogin where personaleid ='" + idTilDb + "' and kodeord='" + kodeTilDb + "'";
         try {
             statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sqlFindUser);
             rs.next();
-            personaleid = String.valueOf(rs.getInt(("personaleid")));
-            Kode = rs.getString("kode");
+            personaleid = rs.getString(("personaleid"));
+            Kode = rs.getString("kodeord");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
