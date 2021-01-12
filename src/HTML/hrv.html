@@ -80,9 +80,9 @@
                 [[22, 0, 0], 75], [[22, 5, 0], 78], [[22, 10, 0], 80], [[22, 15, 0], 82], [[22, 20, 0], 82], [[22, 25, 0], 81], [[22, 30, 0], 82], [[22, 35, 0], 81], [[22, 40, 0], 82], [[22, 45, 0], 83], [[22, 50, 0], 82], [[22, 55, 0], 84],
                 [[23, 0, 0], 86], [[23, 5, 0], 85], [[23, 10, 0], 84], [[23, 15, 0], 81], [[23, 20, 0], 75], [[23, 25, 0], 71], [[23, 30, 0], 70], [[23, 35, 0], 67], [[23, 40, 0], 63], [[23, 45, 0], 60], [[23, 50, 0], 61], [[23, 55, 0], 60]
             ]);
-            data.addColumn('number', 'Baseline = 80 HRV');
+            data.addColumn('number', 'Baseline = 80ms HRV');
             array.addColumn('number', 'Baseline');
-            array.addColumn('number', 'Baseline = 70 HR');
+            array.addColumn('number', 'Baseline = 70bpm HR');
             var options;
             options = {
                 hAxis: {title: 'Time',},
@@ -95,7 +95,7 @@
                     }
                 },
                 vAxis: {
-                    title: '', baseline: 80, baselineColor: 'red',minValue: 0, maxValue: 140, maxHeight: 140,},
+                    title: '', baseline: 80, baselineColor: 'orange',minValue: 0, maxValue: 140, maxHeight: 140,},
 
                 vAxes: {
                     1: {
@@ -123,7 +123,7 @@
                 },
 
                 vAxis: {
-                    title: '', baseline: 75, baselineColor: 'red',minValue: 0, maxValue: 140, maxHeight: 140, maxWidth: 350,},
+                    title: '', baseline: 70, baselineColor: 'orange',minValue: 0, maxValue: 140, maxHeight: 140, maxWidth: 350,},
 
                 vAxes: {
                     1: {
@@ -131,7 +131,8 @@
                         textStyle: {
                             color: 'red'
                         },
-                        ticks: [75]
+                        ticks: [70],
+
 
                     }
                 }
