@@ -1,41 +1,23 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.*;
-import java.util.StringTokenizer;
 
-public class CGIAftaler {
+public class CGIFindPatient {
     static String url2 = "jdbc:mariadb://192.168.239.20:3306/myuser";
+    private static String efternavn =null;
+    private static String cpr = null;
+    private static String fornavn =null;
+    private static String patientid =null;
+    private static String fornavnid =null;
+    private static String efternavnid=null;
+    private static String cprid=null;
     private static Connection conn = null;
     private static Statement statement = null;
-    private static String Patientid = null;
-    private static String dato = null;
-    private static String varighed = null;
-    private static String lokale = null;
-    private static String behandling = null;
-    private static String hospital = null;
-    private static String bh = null;
-    private static int patientid = 0;
-    private static String cookie = null;
-    private static String session = null;
-    private static String aftaleid;
-
-    private static void handleCookies(StringTokenizer t) {
-        String field;
-        while (t.hasMoreTokens()) {
-            field = t.nextToken();
-            if (field != null) {
-                field.trim();
-                StringTokenizer tt = new StringTokenizer(field, "=\n\r");
-                String s = tt.nextToken();
-                if (s.equals("__session")) {
-                    s = tt.nextToken();
-                    if (s != null) session = s;
-                }
-            }
-        }
-    }
-
+    private static PreparedStatement prep = null;
+    static String inputCGI = null;
 
     private static void showHead() {
-        if (session == null) System.out.println("Set-Cookie: __session=" + session);
         System.out.println("Content-Type: text/html");
         System.out.println();
         System.out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\">");
@@ -48,7 +30,7 @@ public class CGIAftaler {
                 "<link rel=\"stylesheet\" href=\"../CSS/Login.html.css\">\n");
         System.out.println("<HEAD>");
         System.out.println("<TITLE>Aftaler</TITLE>");
-        System.out.println("<META http-equiv=\"content-type\" content=\"text/html; charset=ISO-8859-1\">");
+        System.out.println("<META http-equiv=\"content-type\" content=\"text/html; charset=UTC-8\">");
         System.out.println("<META http-equiv=\"Pragma\" content=\"no-cache\">");
         System.out.println("<META http-equiv=\"expires\" content=\"0\">");
         System.out.println("<form action=\"/cgi-bin/CGIGet\"></form>\n" +
@@ -93,14 +75,11 @@ public class CGIAftaler {
                 "\n" +
                 "<table>\n" +
                 "    <tr>\n" +
-                "        <th>Aftaleid</th>\n" +
+                "        <th>Patientid</th>\n" +
                 "        <th>CPR-nummer</th>\n" +
-                "        <th>Dato</th>\n" +
-                "        <th>Varighed</th>\n" +
-                "        <th>Hospital</th>\n" +
-                "        <th>Lokale</th>\n" +
-                "        <th>Behandling</th>\n" +
-                "        <th>Slet</th>\n" +
+                "        <th>Fornavn</th>\n" +
+                "        <th>Efternavn</th>\n" +
+                "        <th>Valg af bruger</th>\n" +
                 "    </tr>\n");
 
 
@@ -110,90 +89,75 @@ public class CGIAftaler {
 
     }
 
-    private static void showBody(StringTokenizer t) {
-        String field;
-        while (t.hasMoreTokens()) {
-            field = t.nextToken();
-            if (field != null) {
+    private static void showBody() {
 
-                StringTokenizer tt = new StringTokenizer(field, "=\n\r");
-                String s = tt.nextToken();
-                if (s != null) {
-                    System.out.println(s);
-                    s = tt.nextToken();
-                }
-
-            }
-        }
         System.out.println(
                 "\n" +
                         "    <tr>\n" +
-                        " <form action=\"/cgi-bin/CGISletAftale\" method=\"post\">\n" +
-                        "        <td> <input type=\"hidden\" name=\"id\" value=" + aftaleid + ">" + aftaleid + "</td>\n" +
-                        "        <td> <input type=\"hidden\" name=\"id\" value=" + Patientid + ">" + Patientid + "</td>\n" +
-                        "        <td>" + dato + "</td>\n" +
-                        "        <td>" + varighed + "</td>\n" +
-                        "        <td>" + hospital + "</td>\n" +
-                        "        <td>" + lokale + "</td>\n" +
-                        "        <td>" + bh + "</td>\n" +
-                        "        <td><button type=\"submit\">Slet </button></td>\n" +
-
+                        " <form action=\"/cgi-bin/CGIBrugerValg\" method=\"post\">\n" +
+                        "        <td> <input type=\"hidden\" name=\"id\" value=" + patientid + ">" + patientid + "</td>\n" +
+                        "        <td> <input type=\"hidden\" name=\"id\" value=" + cprid + ">" + cprid + "</td>\n" +
+                        "        <td>" + fornavnid + "</td>\n" +
+                        "        <td>" + efternavnid + "</td>\n" +
+                        "        <td><button type=\"submit\">Valg af bruger</button></td>\n" +
                         "</form>" +
                         "    </tr>\n" +
                         "\n");
-
     }
 
     private static void showTail() {
         System.out.println("</table>\n" +
-                "<div class=\"container2\">\n"+
-                "<a href=\"/LavAftale.html\"><button>Bestil ny aftale</button></a>\n" +
-                "</div>\n" +
                 "</BODY>\n</HTML>");
     }
 
-    public static void main(String[] args) throws ClassNotFoundException {
-        if (args.length > 1 && args[1] != null && args[1].length() > 0) {
-            cookie = args[1];
-            handleCookies(new StringTokenizer(cookie, ";\n\r"));
-        }
-
+    public static void main(String[] args) {
         showHead();
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");
+
+            //mysql skal  ndres senere til MariaDB, localhost til en IPaddresse -
             String user, pass;
             user = "oskar";
             pass = "123456789";
-            /*if (cookie != null) System.out.println("Cookie: " + cookie + "<BR>");
-            if (session != null) System.out.println("Session: " + session + "<BR>");*/
-            patientid = Integer.parseInt(session);
+            // url="jdbc:mysql://localhost:3306/phoenixpoint?serverTimezone=Europe/Amsterdam&amp";
+
+            // Skal man fx. bruge 127.0.0.1 til en remote maskine?
+//Connection connection =
+// DriverManager.getConnection("jdbc:mariadb://localhost:3306/DB?user=root&password=myPassword");
+            //T nk jer om - kan man opn  mariadb forbindelse til en anden maskine uden at  ndre denne her?
             conn = DriverManager.getConnection(url2, user, pass);
-            String sqlFindaftaler = "select * from aftaler where cpr ='" + patientid + "'";
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            String[] data = {in.readLine()};
+            inputCGI = data[0];
+            System.out.println(inputCGI);
+            String[] clientResponse;
+            clientResponse = inputCGI.split("&");
+            String[] cprpost;
+            cprpost = clientResponse[0].split("=");
+            cpr = cprpost[1];
+            String[] fornavnpost;
+            fornavnpost = clientResponse[1].split("=");
+            fornavn = fornavnpost[1];
+            String[] efternavnpost;
+            efternavnpost = clientResponse[2].split("=");
+            efternavn = efternavnpost[1];
+            String sqlFindaftaler = "SELECT*FROM patient WHERE cpr ='"+ cpr +"' OR fornavn LIKE '"+ fornavn +"' OR efternavn LIKE '"+ efternavn+"'";
             statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sqlFindaftaler);
             while (rs.next()) {
-                aftaleid = String.valueOf(rs.getInt("aftaleid"));
-                Patientid = String.valueOf(rs.getInt("cpr"));
-                dato = rs.getString("dato");
-                varighed = rs.getString("varighed");
-                lokale = rs.getString("lokale");
-                behandling = rs.getString("behandling");
-                bh = behandling.replaceAll("%C3%B8", "ø");
-                hospital = rs.getString("hospital");
-                showBody(new StringTokenizer(args[0], "&\n\r"));
+                patientid = String.valueOf(rs.getInt("patientid"));
+                fornavnid = rs.getString("fornavn");
+                efternavnid = rs.getString("efternavn");
+                cprid = String.valueOf(rs.getInt("cpr"));
 
             }
-
-
+            showBody();
             showTail();
-
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException | IOException e) {
             e.printStackTrace();
         }
+
     }
-
 }
-
-
-

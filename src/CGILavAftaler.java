@@ -77,7 +77,7 @@ public class CGILavAftaler {
             String[] skadepost;
             skadepost = clientResponse[2].split("=");
             skade = skadepost[1];
-            String nyskade = skade.replaceAll("\\+"," ").replaceAll("%2C",",");
+            String nyskade = skade.replaceAll("\\+"," ").replaceAll("%2C",",").replaceAll("%C3%B8", "ø");;
             String lokale = (int) (Math.random() * 1000) + "A";
             String hospital = "Odense Universitetshospital";
             cpr = session;
