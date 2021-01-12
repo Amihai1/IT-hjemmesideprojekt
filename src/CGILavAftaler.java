@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.*;
+import java.util.Random;
+import java.util.StringTokenizer;
 
 public class CGILavAftaler {
     static final String JDBC_DRIVER = "org.mariadb.jdbc.Driver";
@@ -11,14 +13,35 @@ public class CGILavAftaler {
     private static String cpr;
     private static String dato;
     private static String varighed;
-
+    private static String session = null;
+    private static String cookie = null;
     String addresse = "jdbc:mariadb://[ip6]:3306/schemanavn";
     private static Connection conn = null;
     private static Statement statement = null;
     private static PreparedStatement prep = null;
     static String inputfraCGI = null;
     static String[] data;
+    private static void handleCookies(StringTokenizer t) {
+        String field;
+        while (t.hasMoreTokens()) {
+            field = t.nextToken();
+            if (field != null) {
+                field.trim();
+                StringTokenizer tt = new StringTokenizer(field, "=\n\r");
+                String s = tt.nextToken();
+                if (s.equals("__session")) {
+                    s = tt.nextToken();
+                    if (s != null) session = s;
+                }
+            }
+        }
+    }
     public static void main(String[] args) {
+        if (args.length > 1 && args[1] != null && args[1].length() > 0) {
+            cookie = args[1];
+            handleCookies(new StringTokenizer(cookie, ";\n\r"));
+        }
+
         showError();
         showTail();
         try {
@@ -43,24 +66,21 @@ public class CGILavAftaler {
             System.out.println(inputfraCGI);
             String[] clientResponse;
             clientResponse = inputfraCGI.split("&");
-            String[] patientidpost;
-            patientidpost = clientResponse[0].split("=");
-            cpr = patientidpost[1];
             String[] datopost;
-            datopost = clientResponse[1].split("=");
+            datopost = clientResponse[0].split("=");
             dato = datopost[1];
             String nydato = dato.replaceAll("T"," ").replaceAll("%3A",":");
             clientResponse = inputfraCGI.split("&");
             String[] varighedpost;
-            varighedpost = clientResponse[2].split("=");
+            varighedpost = clientResponse[1].split("=");
             varighed = varighedpost[1] + "min";
             String[] skadepost;
-            skadepost = clientResponse[3].split("=");
+            skadepost = clientResponse[2].split("=");
             skade = skadepost[1];
-            String nyskade = skade.replaceAll("\\+"," ");
-            String lokale = "716W";
+            String nyskade = skade.replaceAll("\\+"," ").replaceAll("%2C",",");
+            String lokale = (int) (Math.random() * 1000) + "A";
             String hospital = "Odense Universitetshospital";
-
+            cpr = session;
 
             try {
                 String sqlFindUser = "INSERT INTO aftaler(cpr,dato,varighed,lokale,behandling,hospital) VALUES(?,?,?,?,?,?)";

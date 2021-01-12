@@ -15,6 +15,7 @@ public class CGIAftaler {
     private static int patientid = 0;
     private static String cookie = null;
     private static String session = null;
+    private static String aftaleid;
 
     private static void handleCookies(StringTokenizer t) {
         String field;
@@ -34,7 +35,7 @@ public class CGIAftaler {
 
 
     private static void showHead() {
-        if (session == null) System.out.println("Set-Cookie: __session=" + cookie);
+        if (session == null) System.out.println("Set-Cookie: __session=" + session);
         System.out.println("Content-Type: text/html");
         System.out.println();
         System.out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\">");
@@ -90,13 +91,14 @@ public class CGIAftaler {
                 "\n" +
                 "<table>\n" +
                 "    <tr>\n" +
-                "        <th>Aendre/slet</th>\n" +
+                "        <th>Aftaleid</th>\n" +
                 "        <th>CPR-nummer</th>\n" +
                 "        <th>Dato</th>\n" +
                 "        <th>Varighed</th>\n" +
                 "        <th>Hospital</th>\n" +
                 "        <th>Lokale</th>\n" +
                 "        <th>Behandling</th>\n" +
+                "        <th>Slet</th>\n" +
                 "    </tr>\n");
 
 
@@ -106,17 +108,35 @@ public class CGIAftaler {
 
     }
 
-    private static void showBody() {
+    private static void showBody(StringTokenizer t) {
+        String field;
+        while (t.hasMoreTokens()){
+            field = t.nextToken();
+            if (field != null){
+
+                StringTokenizer tt = new StringTokenizer(field, "=\n\r");
+                String s = tt.nextToken();
+                if (s != null){
+                    System.out.println(s);
+                    s = tt.nextToken();
+                }
+
+            }
+        }
         System.out.println(
                 "\n" +
                         "    <tr>\n" +
-                        "        <td><button>Slet/Aendre</button></td>\n" +
-                        "        <td>" + Patientid + "</td>\n" +
+                        " <form action=\"/cgi-bin/CGISletAftale\" method=\"post\">\n" +
+                        "        <td> <input type=\"hidden\" name=\"id\" value="+ aftaleid + ">" + aftaleid + "</td>\n" +
+                        "        <td> <input type=\"hidden\" name=\"id\" value="+ Patientid + ">" + Patientid + "</td>\n" +
                         "        <td>" + dato + "</td>\n" +
                         "        <td>" + varighed + "</td>\n" +
                         "        <td>" + hospital + "</td>\n" +
                         "        <td>" + lokale + "</td>\n" +
                         "        <td>" + bh + "</td>\n" +
+                        "        <td><button type=\"submit\">Slet </button></td>\n" +
+
+                        "</form>"+
                         "    </tr>\n" +
                         "\n");
 
@@ -149,6 +169,7 @@ public class CGIAftaler {
             statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sqlFindaftaler);
             while (rs.next()) {
+                aftaleid = String.valueOf(rs.getInt("aftaleid"));
                 Patientid = String.valueOf(rs.getInt("cpr"));
                 dato = rs.getString("dato");
                 varighed = rs.getString("varighed");
@@ -156,7 +177,7 @@ public class CGIAftaler {
                 behandling = rs.getString("behandling");
                 bh = behandling.replaceAll("%C3%B8", "ø");
                 hospital = rs.getString("hospital");
-                showBody();
+                showBody(new StringTokenizer(args[0],"&\n\r"));
 
             }
 
