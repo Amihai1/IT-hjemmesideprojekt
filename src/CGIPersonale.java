@@ -138,13 +138,13 @@ public class CGIPersonale {
                 "<div class=\"container1\">\n" +
                 "    <p><b>Find Patient</b></p>\n" +
                 "    <form action=\"/cgi-bin/CGIFindPatient\" method=\"post\">\n" +
-                "        <label><p>CPR</p></label>\n" +
-                "        <input type=\"number\" name=\"cpr\" placeholder=\"Indtast CPR-nummer\">\n" +
+                "        <label><p> CPR </p></label>\n" +
+                "        <input type=\"number\" name=\"cpr\" id=\"cpr\">\n" +
                 "        <label><p>Fornavn</p></label>\n" +
-                "        <input type=\"text\" name=\"fornavn\" placeholder=\"Indtast Fornavn\">\n" +
+                "        <input type=\"text\" name=\"fornavn\" id=\"fornavn\">\n" +
                 "        <label><p>Efternavn</p></label>\n" +
-                "        <input type=\"text\" name=\"efternavn\" placeholder=\"Indtast Efternavn\">\n" +
-                "        <input type=\"submit\" title=\"Submit\">\n" +
+                "        <input type=\"text\" name=\"efternavn\" id=\"efternavn\">\n" +
+                "        <input type=\"submit\">\n" +
                 "    </form>\n" +
                 "</div>");
 
