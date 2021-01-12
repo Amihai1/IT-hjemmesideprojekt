@@ -73,36 +73,47 @@ public class CGIPersonale {
     private static void showHead() {
         System.out.println("Content-Type: text/html");
         System.out.println();
-        System.out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\">");
-        System.out.println("<HTML>");
-        System.out.println("<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">\n" +
+        System.out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\">\n" +
+                "<HTML>\n" +
+                "<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">\n" +
                 "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Lato\">\n" +
                 "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n" +
                 "<link rel=\"stylesheet\" href=\"../CSS/standard.css\">\n" +
-                "<link rel=\"stylesheet\" href=\"../CSS/Brugerside.css\">");
-        System.out.println("<HEAD>");
-        System.out.println("<TITLE>Brugerside</TITLE>");
-        System.out.println("<META http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">");
-        System.out.println("<META http-equiv=\"Pragma\" content=\"no-cache\">");
-        System.out.println("<META http-equiv=\"expires\" content=\"0\">");
-        System.out.println("<form action=\"/cgi-bin/CGIGet\"></form>\n" +
-                "<p1>\n" +
-                "<!-- Links (sit on top) -->\n" +
-                "<div class=\"w3-top topnav\">\n" +
-                "    <div class=\"w3-row w3-large\">\n" +
-                "        <div class=\"w3-col s3\">\n" +
-                "            <a href=\"Brugerside.html\" class=\"w3-button w3-block\"><i class=\"fa fa-fw fa-user-o\"></i>&nbsp Min Side</a>\n" +
-                "        </div>\n" +
+                "<link rel=\"stylesheet\" href=\"../CSS/Login.html.css\">\n" +
+                "<HEAD>\n" +
+                "    <TITLE>Patient</TITLE>\n" +
+                "    <META http-equiv=\"content-type\" content=\"text/html; charset=UTC-8\">\n" +
+                "    <META http-equiv=\"Pragma\" content=\"no-cache\">\n" +
+                "    <META http-equiv=\"expires\" content=\"0\">\n" +
+                "    <style>\n" +
+                "        table {\n" +
+                "            font-family: arial, sans-serif;\n" +
+                "            border-collapse: collapse;\n" +
+                "            width: 100%;\n" +
+                "        }\n" +
                 "\n" +
-                "        <div class=\"w3-col s3 w3-right\">\n" +
-                "             <a href=\"/index.html\" class=\"w3-button w3-block\"><i class=\"fa fa-sign-out\" style=\"color:#ff0000\">\n" +
-                "            </i>&nbsp\n" +
-                "                Log Ud</a>\n" +
-                "        </div>\n" +
+                "        td, th {\n" +
+                "            border: 1px solid #dddddd;\n" +
+                "            text-align: left;\n" +
+                "            padding: 8px;\n" +
+                "        }\n" +
                 "\n" +
-                "    </div>\n" +
-                "</div>\n" +
-                "</p1>");
+                "        tr:nth-child(even) {\n" +
+                "            background-color: #dddddd;\n" +
+                "        }\n" +
+                "\n" +
+                "        table {\n" +
+                "            margin-top: 80px;\n" +
+                "        }\n" +
+                "\n" +
+                "        input {\n" +
+                "            font-size: 26px;\n" +
+                "\n" +
+                "        }\n" +
+                "        p{\n" +
+                "            font-size: 24px;\n" +
+                "        }\n" +
+                "    </style>");
 
 
         System.out.println("</HEAD>");
@@ -111,50 +122,32 @@ public class CGIPersonale {
     }
 
     private static void showBody() {
-        System.out.println("<p2>\n" +
-                "<h2>\n" +
-                "<div class=\"row1\">\n" +
-                "    <div class=\"column1\">\n" +
-                "        <div class=\"card1\">\n" +
-                "            <a href=\"/hrv.html\"> <img src=\"//images01.nicepage.io/b6/f4/b6f4c452eabd98602023c4a997ae454e.jpeg\" alt=\"Beskeder\"\n" +
-                "                 style=\"width:100%\">\n" +
-                "                <div class=\"centered\">Beskeder</div>\n" +
-                "                <a/>\n" +
-                "                <div class=\"container1\">\n" +
-                "                    <h3>Se dine beskeder</h3>\n" +
-                "                </div>\n" +
+        System.out.println("<div class=\"w3-top topnav\">\n" +
+                "    <div class=\"w3-row w3-large\">\n" +
+                "        <div class=\"w3-col s3\">\n" +
+                "            <a  href=\"Brugerside.html\" class=\"w3-button w3-block\"><i class=\"fa fa-fw fa-user-o\"></i>&nbsp Min Side</a>\n" +
                 "        </div>\n" +
-                "    </div>\n" +
-                "    </div>\n" +
-                "        <div class=\"row1\">\n" +
-                "    <div class=\"column1\">\n" +
-                "        <div class=\"card1\">\n" +
-                "            <a href=\"/Journaler.html\"><img src=\"//images01.nicepage.io/b5/fe/b5fe5145dc5c44d9f83a05cdad99ab29.jpeg\" alt=\"Journaler\"\n" +
-                "                 style=\"width:100%\">\n" +
-                "            <div class=\"centered\">Journaler</div>\n" +
-                "            <a/>\n" +
-                "            <div class=\"container1\">\n" +
-                "                <h3>Se dine Journaler fra sygehus</h3>\n" +
-                "            </div>\n" +
+                "        <div class=\"w3-col s3 w3-right\">\n" +
+                "            <a href=\"/index.html\" class=\"w3-button w3-block\"><i class=\"fa fa-sign-out\" style=\"color:#ff0000\">\n" +
+                "            </i>&nbsp\n" +
+                "                Log Ud</a>\n" +
                 "        </div>\n" +
-                "    </div>\n" +
+                "\n" +
                 "    </div>\n" +
                 "</div>\n" +
-                "</h2>\n" +
-                "</p2>\n" +
-                "\n" +
-                "\n" +
-                "        <!-- Footer -->\n" +
-                "\n" +
-                "        <footer class=\"w3-center\">\n" +
-                "            <br>\n" +
-                "            <img src=\"//Skærmbillede%202020-09-26%20kl.%2010.40.12.png\" height=\"100\" width=\"150\"/>\n" +
-                "            </br>\n" +
-                "            <p>Powered by DTU Sundtek</p>\n" +
-                "        </footer>\n" +
-                "\n" +
-                "\n" +
-                "\n");
+                "<div class=\"container1\">\n" +
+                "    <p><b>Find Patient</b></p>\n" +
+                "    <form action=\"/cgi-bin/CGIFindPatient\" method=\"post\">\n" +
+                "        <label><p>CPR</p></label>\n" +
+                "        <input type=\"number\" name=\"cpr\" placeholder=\"Indtast CPR-nummer\">\n" +
+                "        <label><p>Fornavn</p></label>\n" +
+                "        <input type=\"text\" name=\"fornavn\" placeholder=\"Indtast Fornavn\">\n" +
+                "        <label><p>Efternavn</p></label>\n" +
+                "        <input type=\"text\" name=\"efternavn\" placeholder=\"Indtast Efternavn\">\n" +
+                "        <input type=\"submit\" title=\"Submit\">\n" +
+                "    </form>\n" +
+                "</div>");
+
 
     }
 

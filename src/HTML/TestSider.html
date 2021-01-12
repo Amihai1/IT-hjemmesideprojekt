@@ -57,14 +57,14 @@
     </div>
 </div>
 <div class="container1">
-    <p><b>Bestil en tid</b></p>
+    <p><b>Søg Patient</b></p>
     <form action="/cgi-bin/CGILavAftale" method="post">
-        <label><p>Dato og tid:</p></label>
-        <input type="datetime-local" name="dato og tid" placeholder="år-måned-dag time:minut" required>
-        <label><p>Varighed i minutter:</p></label>
-        <input type="number" name="varighed" required>
-        <label><p>Skade:</p></label>
-        <input type="text" name="skade" placeholder="Beskriv skade kort" maxlength="50" text-size="20px" required>
+        <label><p>Søg CPR</p></label>
+        <input type="number" name="søgcpr" placeholder="Indtast CPR-nummer">
+        <label><p>Søg fornavn</p></label>
+        <input type="text" name="søgfornavn" placeholder="Indtast Fornavn">
+        <label><p>Søg efternavn</p></label>
+        <input type="text" name="skade" placeholder="Indtast Efternavn" maxlength="50" text-size="20px">
         <input type="submit" title="Submit">
     </form>
 </div>
