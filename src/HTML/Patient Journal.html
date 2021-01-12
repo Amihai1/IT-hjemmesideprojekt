@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Patient Journal</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../CSS/standard.css">
+    <link rel="stylesheet" href="../CSS/Brugerside.css">
+
+    <style>
+        #container {
+            height: 300px;
+            width: 400px;
+            border: 2px solid black;
+            position: relative;
+            text-align: center;
+            font-style: italic;
+           font-weight: initial;
+        }
+        #container1 {
+            text-align: center;
+            font-weight: bold;
+        }
+        #label {
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            height: 40px;
+            width: 120px;
+            background-color: whitesmoke;
+            border: 2px solid red;
+            text-align: center;
+        }
+
+        /* Style the header */
+        header {
+
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+
+        }
+        /* Create two columns/boxes that floats next to each other */
+        nav {
+            float: left;
+            width: 30%;
+            padding: 20px;
+
+        }
+
+        /* Style the list inside the menu */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        article {
+            float: right;
+            padding: 20px;
+            width: 50%;
+            background-color: #f1f1f1;
+        }
+
+
+        /* Clear floats after the columns */
+        section::after {
+            content: "";
+            display: table;
+            clear: both;
+
+        }
+        /* Style the footer */
+        footer {
+
+            padding: 10px;
+            text-align: center;
+
+        }
+        p1 {
+          font-weight: bold;
+        }
+
+    </style>
+
+    <p1>
+        <!-- Links (sit on top) -->
+        <div class="w3-top topnav">
+            <div class="w3-row w3-large">
+                <div class="w3-col s3">
+                    <a href="/Patient Journal.html" class="w3-button w3-block"><i class="fa fa-fw fa-user-o"></i>&nbsp Patientnavn</a>
+                </div>
+
+                <div class="w3-col s3 w3-right">
+                    <a href="CGIPersonale" class="w3-button w3-block"><i class="fa fa-sign-out" style="color:#ff0000">
+                    </i>&nbsp
+                        Tilbage</a>
+                </div>
+
+            </div>
+        </div>
+    </p1>
+</head>
+
+<!-- Content -->
+<body>
+<header>
+    <p>
+
+    </p>
+    <h1>Patient Journal</h1>
+</header>
+
+<p>
+
+</p>
+<section>
+
+    <nav>
+
+        <div id="container">
+            <div id="label">HRV 24 timer</div>
+            <p style="font-size: 70px"> 24ms </p>
+        </div>
+        <p>
+        </p>
+
+        <ul>
+            <!-- Trigger/Open The Modal -->
+            <div id="container1">
+            <a class="btn btn-success" href="HRV%20syg.html" target="_blank" style="font-size: 20px">Se HRV Grafer</a>
+            </div>
+        </ul>
+    </nav>
+
+    <article>
+        <h1>Journal</h1>
+        <p1>Tove Nielsen:</p1>
+        <p>Diagnose: Takykardi</p>
+        <p1>Behandling:</p1>
+        <p>24 timers HRV-test for kontrol</p>
+        <p>Patient er blevet bedt om, at føre kontrol via. logbog</p>
+        <p>Hvis resultater tyder på Cardiac risk, send til hjerteundersøgelse</p>
+    </article>
+    <article>
+        <textarea id="w3review" name="w3review" rows="4" cols="50">
+Evt. kommentarer
+</textarea>
+    </article>
+</section>
+
+
+
+<!-- Footer -->
+
+<footer class="w3-center">
+    <br>
+    <img src="../billeder/Skærmbillede%202020-09-26%20kl.%2010.40.12.png" height="100" width="150"/>
+    <p>Powered by DTU Sundtek</p>
+</footer>
+
+
+</body>
+
+</html>
