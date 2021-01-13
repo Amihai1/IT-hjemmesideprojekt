@@ -11,12 +11,14 @@
             var array = new google.visualization.DataTable();
             var data = new google.visualization.DataTable();
 
+
             data.addColumn('timeofday', 'Time');
             data.addColumn('number', 'HRV');
 
-
             array.addColumn('timeofday', 'Time');
             array.addColumn('number', 'HR')
+
+
 
 
 
@@ -78,8 +80,11 @@
                 [[23, 0, 0], 106], [[23, 5, 0], 105], [[23, 10, 0], 104], [[23, 15, 0], 101], [[23, 20, 0], 105], [[23, 25, 0], 101], [[23, 30, 0], 100], [[23, 35, 0], 107], [[23, 40, 0], 103], [[23, 45, 0], 100], [[23, 50, 0], 101], [[23, 55, 0], 100]
             ]);
 
-            data.addColumn('number', 'Baseline = 23ms HRV');
+            data.addColumn('number', 'Baseline = 22ms HRV');
             array.addColumn('number', 'Baseline');
+
+
+
             array.addColumn('number', 'Baseline = 103bpm HR');
 
 
@@ -95,7 +100,7 @@
                     }
                 },
                 vAxis: {
-                    title: '', baseline: 23, baselineColor: 'orange',minValue: 0, maxValue: 100, maxHeight: 100,},
+                    title: '', baseline: 22, baselineColor: 'orange',minValue: 0, maxValue: 100, maxHeight: 100,},
 
                 vAxes: {
                     1: {
@@ -103,7 +108,7 @@
                         textStyle: {
                             color: 'red'
                         },
-                        ticks: [23],
+                        ticks: [22],
 
                     }
                 }
@@ -138,9 +143,8 @@
             };
 
 
-
             var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-            var HRchart = new google.visualization.LineChart(document.getElementById('HRchart_div'))
+            var HRchart = new google.visualization.LineChart(document.getElementById('HRchart_div'));
             chart.draw(data, options);
             HRchart.draw(array, graf);
         }
@@ -149,8 +153,11 @@
 <body>
 
 <div id="chart_div" style="height: 500px"></div>
-<div style="text-align: center"><a href="index.html"><button >Se ny side</button></a> </div>
+
+<div style="text-align: center"><a href="SammenlignSyg.html"><button >Se Sammenligning</button></a> </div>
 
 <div id="HRchart_div" style="height: 500px"></div>
+
 </body>
+
 </html>
