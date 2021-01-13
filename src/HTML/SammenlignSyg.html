@@ -8,15 +8,8 @@
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart(index) {
-            var array = new google.visualization.DataTable();
-            var data = new google.visualization.DataTable();
+
             var Sam = new google.visualization.DataTable();
-
-            data.addColumn('timeofday', 'Time');
-            data.addColumn('number', 'HRV');
-
-            array.addColumn('timeofday', 'Time');
-            array.addColumn('number', 'HR')
 
             Sam.addColumn('timeofday','Time')
             Sam.addColumn('number', 'Sammmenligning')
