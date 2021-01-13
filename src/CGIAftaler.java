@@ -137,7 +137,6 @@ public class CGIAftaler {
                         "        <td>" + lokale + "</td>\n" +
                         "        <td>" + bh + "</td>\n" +
                         "        <td><button type=\"submit\">Slet </button></td>\n" +
-
                         "</form>" +
                         "    </tr>\n" +
                         "\n");

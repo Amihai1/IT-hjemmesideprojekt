@@ -139,8 +139,8 @@ public class CGIPatient {
                         "<tr>\n" +
                         " <form action=\"/cgi-bin/CGIBrugerValg\" method=\"post\">\n" +
                         "        <td>" + patientid + "</td>\n" +
-                        "        <td> <input type=\"hidden\" value=" + cprid + ">" + cprid + "</td>\n" +
-                        "        <td> <input type=\"hidden\" value=" + fornavnid + ">" + fornavnid + "</td>\n" +
+                        "        <td> <input type=\"hidden\" name=\"id\" value=" + cprid + ">" + cprid + "</td>\n" +
+                        "        <td> <input type=\"hidden\" name=\"id\" value=" + fornavnid + ">" + fornavnid + "</td>\n" +
                         "        <td>" + efternavnid + "</td>\n" +
                         "        <td><button type=\"submit\">Se patient</button></td>\n" +
                         "</form>" +

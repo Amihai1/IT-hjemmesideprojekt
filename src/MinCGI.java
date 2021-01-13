@@ -62,7 +62,6 @@ public class MinCGI {
         if (cookie != null) System.out.println("Cookie: " + cookie + "<BR>");
         if (session!=null) System.out.println("session: "+ session + "<BR>");
         try {
-
             if (findUser(cprTilDb, kodeTilDb) != null) {
                 showBody(new StringTokenizer(args[0],"&\n\r"));
             } else {
@@ -72,10 +71,8 @@ public class MinCGI {
 
         } catch (IOException | SQLException | ClassNotFoundException ioe) {
             System.out.println("<P>IOException reading POST data: " + ioe + "</P>");
+            showTail();
         }
-        showTail();
-
-
     }
 
 
