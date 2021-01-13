@@ -9,9 +9,59 @@ public class CGIPatient {
     private static String fornavnid = null;
     private static String efternavnid = null;
     private static String cprid = null;
+    private static String cpr = null;
+    private static String fornavn = null;
+    private static String efternavn= null;
     private static PreparedStatement prep = null;
     static String inputCGI = null;
+    public static void main(String[] args) throws IOException {
 
+        showHead();
+        try {
+            Class.forName("org.mariadb.jdbc.Driver");
+            //mysql skal  ndres senere til MariaDB, localhost til en IPaddresse -
+            String user, pass;
+            user = "oskar";
+            pass = "123456789";
+            Connection conn = DriverManager.getConnection(url2, user, pass);
+            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+            String[] data = {in.readLine()};
+            inputCGI = data[0];
+            String[] clientResponse;
+            clientResponse = inputCGI.split("&");
+            String[] cprpost;
+            cprpost = clientResponse[0].split("=");
+            cpr = cprpost[1];
+            cpr = "%" + cpr + "%";
+            String[] fornavnpost;
+            fornavnpost = clientResponse[1].split("=");
+            fornavn = fornavnpost[1];
+            fornavn = "%" + fornavn + "%";
+            String[] efternavnpost;
+            efternavnpost = clientResponse[2].split("=");
+            efternavn = efternavnpost[1];
+            efternavn = "%" + efternavn + "%";
+
+
+            String sql = "select * from patient where cpr like ? or fornavn like ? or efternavn like ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, cpr);
+            statement.setString(2, fornavn);
+            statement.setString(3,efternavn);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                cprid = String.valueOf(rs.getInt("cpr"));
+                fornavnid = rs.getString("fornavn");
+                efternavnid = rs.getString("efternavn");
+                patientid = String.valueOf(rs.getInt("patientid"));
+                showBody();
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        showTail();
+    }
     private static void showHead() {
         System.out.println("Content-Type: text/html");
         System.out.println();
@@ -73,7 +123,7 @@ public class CGIPatient {
                 "        <th>CPR-nummer</th>\n" +
                 "        <th>Fornavn</th>\n" +
                 "        <th>Efternavn</th>\n" +
-                "        <th>Valg af bruger</th>\n" +
+                "        <th>Se patient</th>\n" +
                 "    </tr>\n");
 
 
@@ -88,11 +138,11 @@ public class CGIPatient {
                 "\n" +
                         "<tr>\n" +
                         " <form action=\"/cgi-bin/CGIBrugerValg\" method=\"post\">\n" +
-                        "        <td> <input type=\"hidden\" value=" + patientid + ">" + patientid + "</td>\n" +
+                        "        <td>" + patientid + "</td>\n" +
                         "        <td> <input type=\"hidden\" value=" + cprid + ">" + cprid + "</td>\n" +
-                        "        <td>" + fornavnid + "</td>\n" +
+                        "        <td> <input type=\"hidden\" value=" + fornavnid + ">" + fornavnid + "</td>\n" +
                         "        <td>" + efternavnid + "</td>\n" +
-                        "        <td><button type=\"submit\">Valg af bruger</button></td>\n" +
+                        "        <td><button type=\"submit\">Se patient</button></td>\n" +
                         "</form>" +
                         "    </tr>\n" +
                         "\n");
@@ -103,57 +153,5 @@ public class CGIPatient {
                 "</BODY>\n</HTML>");
     }
 
-    public static void main(String[] args) throws IOException {
-        showHead();
-        try {
 
-            Class.forName("org.mariadb.jdbc.Driver");
-
-            //mysql skal  ndres senere til MariaDB, localhost til en IPaddresse -
-            String user, pass;
-            user = "oskar";
-            pass = "123456789";
-            Connection conn = DriverManager.getConnection(url2, user, pass);
-            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-            String[] data = {in.readLine()};
-            inputCGI = data[0];
-            String[] clientResponse;
-            clientResponse = inputCGI.split("&");
-            String[] cprpost;
-            cprpost = clientResponse[0].split("=");
-            String cpr = cprpost[1];
-            cpr = "%" + cpr + "%";
-            String[] fornavnpost;
-            fornavnpost = clientResponse[1].split("=");
-            String fornavn = fornavnpost[1];
-            fornavn = "%" + fornavn + "%";
-            String[] efternavnpost;
-            efternavnpost = clientResponse[2].split("=");
-            String efternavn = efternavnpost[1];
-            efternavn = "%" + efternavn + "%";
-
-            String sql = "select * from patient where cpr = ? or fornavn like ? or efternavn like ?";
-            PreparedStatement statement = conn.prepareStatement(sql);
-            statement.setString(1, cpr);
-            statement.setString(2, fornavn);
-            statement.setString(3, efternavn);
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                cprid = String.valueOf(rs.getInt("cpr"));
-                fornavnid = rs.getString("fornavn");
-                efternavnid = rs.getString("efternavn");
-                patientid = String.valueOf(rs.getInt("patientid"));
-                showBody();
-            }
-
-            showTail();
-
-
-
-        } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-        }
-
-
-    }
 }

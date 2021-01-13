@@ -139,11 +139,11 @@ public class CGIPersonale {
                 "    <p><b>Find Patient</b></p>\n" +
                 "    <form action=\"/cgi-bin/CGIFindPatient\" method=\"post\">\n" +
                 "        <label><p> CPR </p></label>\n" +
-                "        <input type=\"number\" name=\"cpr\" id=\"cpr\">\n" +
+                "        <input type=\"number\" name=\"cpr\" id=\"cpr\" value=\"0000000000\">\n" +
                 "        <label><p>Fornavn</p></label>\n" +
-                "        <input type=\"text\" name=\"fornavn\" id=\"fornavn\">\n" +
+                "        <input type=\"text\" name=\"fornavn\" id=\"fornavn\" value=\"Indtast fornavn\" >\n" +
                 "        <label><p>Efternavn</p></label>\n" +
-                "        <input type=\"text\" name=\"efternavn\" id=\"efternavn\">\n" +
+                "        <input type=\"text\" name=\"efternavn\" id=\"efternavn\" value=\"Indtast efternavn\">\n" +
                 "        <input type=\"submit\">\n" +
                 "    </form>\n" +
                 "</div>");
