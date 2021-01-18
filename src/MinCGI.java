@@ -57,13 +57,13 @@ public class MinCGI {
         kodepost = clientResponse[1].split("=");
         kodeTilDb = kodepost[1];
         cookie = cprTilDb;
-        handleCookies(new StringTokenizer(cookie,";\n\r"));
+        handleCookies(new StringTokenizer(cookie, ";\n\r"));
         showHead();
         if (cookie != null) System.out.println("Cookie: " + cookie + "<BR>");
-        if (session!=null) System.out.println("session: "+ session + "<BR>");
+        if (session != null) System.out.println("session: " + session + "<BR>");
         try {
             if (findUser(cprTilDb, kodeTilDb) != null) {
-                showBody(new StringTokenizer(args[0],"&\n\r"));
+                showBody();
             } else {
                 showError();
             }
@@ -77,7 +77,7 @@ public class MinCGI {
 
 
     private static void showHead() {
-        if(session == null) System.out.println("Set-Cookie: __session="+cookie);
+        if (session == null) System.out.println("Set-Cookie: __session=" + cookie);
         System.out.println("Content-Type: text/html");
         System.out.println();
         System.out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\">");
@@ -92,24 +92,29 @@ public class MinCGI {
         System.out.println("<META http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">");
         System.out.println("<META http-equiv=\"Pragma\" content=\"no-cache\">");
         System.out.println("<META http-equiv=\"expires\" content=\"0\">");
-        System.out.println("<form action=\"/cgi-bin/CGIGet\"></form>\n" +
+        System.out.println("<script>\n" +
+                "function goBack() {\n" +
+                "  window.history.back();\n" +
+                "}\n" +
+                "</script>");
+        System.out.println(
                 "<p1>\n" +
-                "<!-- Links (sit on top) -->\n" +
-                "<div class=\"w3-top topnav\">\n" +
-                "    <div class=\"w3-row w3-large\">\n" +
-                "        <div class=\"w3-col s3\">\n" +
-                "            <a href=\"Brugerside.html\" class=\"w3-button w3-block\"><i class=\"fa fa-fw fa-user-o\"></i>&nbsp Min Side</a>\n" +
-                "        </div>\n" +
-                "\n" +
-                "        <div class=\"w3-col s3 w3-right\">\n" +
-                "             <a href=\"/index.html\" class=\"w3-button w3-block\"><i class=\"fa fa-sign-out\" style=\"color:#ff0000\">\n" +
-                "            </i>&nbsp\n" +
-                "                Log Ud</a>\n" +
-                "        </div>\n" +
-                "\n" +
-                "    </div>\n" +
-                "</div>\n" +
-                "</p1>");
+                        "<!-- Links (sit on top) -->\n" +
+                        "<div class=\"w3-top topnav\">\n" +
+                        "    <div class=\"w3-row w3-large\">\n" +
+                        "        <div class=\"w3-col s3\">\n" +
+                        "            <a onclick=\"goBack()\" class=\"w3-button w3-block\"><i class=\"fa fa-arrow-left\"></i>&nbsp Tilbage</a>\n" +
+                        "        </div>\n" +
+                        "\n" +
+                        "        <div class=\"w3-col s3 w3-right\">\n" +
+                        "             <a href=\"/index.html\" class=\"w3-button w3-block\"><i class=\"fa fa-sign-out\" style=\"color:#ff0000\">\n" +
+                        "            </i>&nbsp\n" +
+                        "                Log Ud</a>\n" +
+                        "        </div>\n" +
+                        "\n" +
+                        "    </div>\n" +
+                        "</div>\n" +
+                        "</p1>");
 
 
         System.out.println("</HEAD>");
@@ -117,35 +122,20 @@ public class MinCGI {
 
     }
 
-    private static void showBody(StringTokenizer t) {
-        String field;
-        while (t.hasMoreTokens()){
-            field = t.nextToken();
-            if (field != null){
-
-                StringTokenizer tt = new StringTokenizer(field, "=\n\r");
-                String s = tt.nextToken();
-                if (s != null){
-                    System.out.println(s);
-                    s = tt.nextToken();
-                }
-
-            }
-        }
+    private static void showBody() {
         System.out.println("<p2>\n" +
                 "<h2>\n" +
-                "<div class=\"row1\">\n" +
+                "   <div class=\"row1\">\n" +
                 "    <div class=\"column1\">\n" +
                 "        <div class=\"card1\">\n" +
-                "            <a href=\"/Beskeder.html\"> <img src=\"//images01.nicepage.io/b6/f4/b6f4c452eabd98602023c4a997ae454e.jpeg\" alt=\"Beskeder\"\n" +
+                "            <form action=\"/cgi-bin/CGIBeskeder\" method=\"post\"><button type=\"submit\"> <img src=\"//images01.nicepage.io/b6/f4/b6f4c452eabd98602023c4a997ae454e.jpeg\" alt=\"Beskeder\"\n" +
                 "                 style=\"width:100%\">\n" +
-                "                <div class=\"centered\">Beskeder</div>\n" +
-                "                <a/>\n" +
-                "                <div class=\"container1\">\n" +
-                "                    <h3>Se dine beskeder</h3>\n" +
-                "                </div>\n" +
+                "            <div class=\"centered\">Beskeder</div>\n" +
+                "            </button></form>\n" +
+                "            <div class=\"container1\">\n" +
+                "                <h3>Se dine beskeder</h3>\n" +
+                "            </div>\n" +
                 "        </div>\n" +
-                "    </div>\n" +
                 "    </div>\n" +
                 "\n" +
                 "    <div class=\"row1\">\n" +
@@ -184,7 +174,7 @@ public class MinCGI {
                 "\n" +
                 "        <footer class=\"w3-center\">\n" +
                 "            <br>\n" +
-                "            <img src=\"../billeder/Skærmbillede%202020-09-26%20kl.%2010.40.12.png\" height=\"100\" width=\"150\"/>\n" +
+                "            <img src=\"//billeder/Skaermbillede-202020-09-26%20kl.-2010.40.12.png\" height=\"100\" width=\"150\">\n" +
                 "            </br>\n" +
                 "            <p>Powered by DTU Sundtek</p>\n" +
                 "        </footer>\n" +
@@ -235,7 +225,6 @@ public class MinCGI {
         return Cpr;
 
     }
-
 
 
     private static void handleCookies(StringTokenizer t) {

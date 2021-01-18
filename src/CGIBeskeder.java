@@ -1,22 +1,21 @@
-import java.nio.charset.StandardCharsets;
 import java.sql.*;
 import java.util.StringTokenizer;
 
-public class CGIAftaler {
+public class CGIBeskeder {
     static String url2 = "jdbc:mariadb://192.168.239.20:3306/myuser";
     private static Connection conn = null;
     private static Statement statement = null;
-    private static String Patientid = null;
+    private static String cprnummer = null;
     private static String dato = null;
-    private static String varighed = null;
-    private static String lokale = null;
+    private static String personalenavn = null;
+    private static String emne = null;
     private static String behandling = null;
-    private static String hospital = null;
+    private static String Besked = null;
     private static String bh = null;
     private static int patientid = 0;
     private static String cookie = null;
     private static String session = null;
-    private static String aftaleid;
+    private static String beskedid;
 
     private static void handleCookies(StringTokenizer t) {
         String field;
@@ -64,50 +63,49 @@ public class CGIAftaler {
                         "    <div class=\"w3-row w3-large\">\n" +
                         "        <div class=\"w3-col s3\">\n" +
                         "            <a onclick=\"goBack()\" class=\"w3-button w3-block\"><i class=\"fa fa-arrow-left\"></i>&nbsp Tilbage</a>\n" +
-                "        </div>\n" +
-                "\n" +
-                "        <div class=\"w3-col s3 w3-right\">\n" +
-                "             <a href=\"/index.html\" class=\"w3-button w3-block\"><i class=\"fa fa-sign-out\" style=\"color:#ff0000\">\n" +
-                "            </i>&nbsp\n" +
-                "                Log Ud</a>\n" +
-                "        </div>\n" +
-                "\n" +
-                "    </div>\n" +
-                "</div>\n" +
-                "</p1>" +
-                "<style>\n" +
-                "            table {\n" +
-                "                font-family: arial, sans-serif;\n" +
-                "                border-collapse: collapse;\n" +
-                "                width: 100%;\n" +
-                "            }\n" +
-                "\n" +
-                "            td, th {\n" +
-                "                border: 1px solid #dddddd;\n" +
-                "                text-align: left;\n" +
-                "                padding: 8px;\n" +
-                "                font-size: 28px;\n" +
-                "            }\n" +
-                "\n" +
-                "            tr:nth-child(even) {\n" +
-                "                background-color: #dddddd;\n" +
-                "            }\n" +
-                "table{\n" +
-                "                margin-top: 80px;\n" +
-                "            }\n" +
-                "        </style>" +
-                "\n" +
-                "<table>\n" +
-                "    <tr>\n" +
-                "        <th>Aftaleid</th>\n" +
-                "        <th>CPR-nummer</th>\n" +
-                "        <th>Dato</th>\n" +
-                "        <th>Varighed</th>\n" +
-                "        <th>Hospital</th>\n" +
-                "        <th>Lokale</th>\n" +
-                "        <th>Behandling</th>\n" +
-                "        <th>Slet</th>\n" +
-                "    </tr>\n");
+                        "        </div>\n" +
+                        "\n" +
+                        "        <div class=\"w3-col s3 w3-right\">\n" +
+                        "             <a href=\"/index.html\" class=\"w3-button w3-block\"><i class=\"fa fa-sign-out\" style=\"color:#ff0000\">\n" +
+                        "            </i>&nbsp\n" +
+                        "                Log Ud</a>\n" +
+                        "        </div>\n" +
+                        "\n" +
+                        "    </div>\n" +
+                        "</div>\n" +
+                        "</p1>" +
+                        "<style>\n" +
+                        "            table {\n" +
+                        "                font-family: arial, sans-serif;\n" +
+                        "                border-collapse: collapse;\n" +
+                        "                width: 100%;\n" +
+                        "            }\n" +
+                        "\n" +
+                        "            td, th {\n" +
+                        "                border: 1px solid #dddddd;\n" +
+                        "                text-align: left;\n" +
+                        "                padding: 8px;\n" +
+                        "                font-size: 28px;\n" +
+                        "            }\n" +
+                        "\n" +
+                        "            tr:nth-child(even) {\n" +
+                        "                background-color: #dddddd;\n" +
+                        "            }\n" +
+                        "table{\n" +
+                        "                margin-top: 80px;\n" +
+                        "            }\n" +
+                        "        </style>" +
+                        "\n" +
+                        "<table>\n" +
+                        "    <tr>\n" +
+                        "        <th>Beskedid</th>\n" +
+                        "        <th>CPR-nummer</th>\n" +
+                        "        <th>Dato</th>\n" +
+                        "        <th>Sygepersonale</th>\n" +
+                        "        <th>Emne</th>\n" +
+                        "        <th>Besked</th>\n" +
+                        "        <th>Slet</th>\n" +
+                        "    </tr>\n");
 
 
         System.out.println("</HEAD>");
@@ -134,14 +132,13 @@ public class CGIAftaler {
         System.out.println(
                 "\n" +
                         "    <tr>\n" +
-                        " <form action=\"/cgi-bin/CGISletAftale\" method=\"post\">\n" +
-                        "        <td> <input type=\"hidden\" name=\"id\" value=" + aftaleid + ">" + aftaleid + "</td>\n" +
-                        "        <td> <input type=\"hidden\" name=\"id\" value=" + Patientid + ">" + Patientid + "</td>\n" +
+                        " <form action=\"/cgi-bin/CGISletBesked\" method=\"post\">\n" +
+                        "        <td> <input type=\"hidden\" name=\"id\" value=" + beskedid + ">" + beskedid + "</td>\n" +
+                        "        <td> <input type=\"hidden\" name=\"id\" value=" + cprnummer + ">" + cprnummer + "</td>\n" +
                         "        <td>" + dato + "</td>\n" +
-                        "        <td>" + varighed + "</td>\n" +
-                        "        <td>" + hospital + "</td>\n" +
-                        "        <td>" + lokale + "</td>\n" +
-                        "        <td>" + behandling + "</td>\n" +
+                        "        <td>" + personalenavn + "</td>\n" +
+                        "        <td>" + emne + "</td>\n" +
+                        "        <td>" + Besked + "</td>\n" +
                         "        <td><button type=\"submit\">Slet </button></td>\n" +
                         "</form>" +
                         "    </tr>\n" +
@@ -150,9 +147,6 @@ public class CGIAftaler {
 
     private static void showTail() {
         System.out.println("</table>\n" +
-                "<div class=\"container2\">\n"+
-                "<a href=\"/LavAftale.html\"><button>Bestil ny aftale</button></a>\n" +
-                "</div>\n" +
                 "</BODY>\n</HTML>");
     }
 
@@ -173,18 +167,16 @@ public class CGIAftaler {
             if (session != null) System.out.println("Session: " + session + "<BR>");*/
             patientid = Integer.parseInt(session);
             conn = DriverManager.getConnection(url2, user, pass);
-            String sqlFindaftaler = "select * from aftaler where cpr ='" + patientid + "'";
+            String sqlFindaftaler = "select * from beskeder where patientcpr ='" + patientid + "'";
             statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sqlFindaftaler);
             while (rs.next()) {
-                aftaleid = String.valueOf(rs.getInt("aftaleid"));
-                Patientid = String.valueOf(rs.getInt("cpr"));
+                beskedid = String.valueOf(rs.getInt("beskedid"));
+                cprnummer = String.valueOf(rs.getInt("patientcpr"));
                 dato = rs.getString("dato");
-                varighed = rs.getString("varighed");
-                lokale = rs.getString("lokale");
-                behandling = rs.getString("behandling");
-                //bh = behandling.replaceAll("\\?", "ø");
-                hospital = rs.getString("hospital");
+                personalenavn = rs.getString("sygepersonalenavn");
+                emne = rs.getString("emne");
+                Besked = rs.getString("beskedtext");
                 showBody(new StringTokenizer(args[0], "&\n\r"));
 
             }
@@ -198,6 +190,4 @@ public class CGIAftaler {
     }
 
 }
-
-
 

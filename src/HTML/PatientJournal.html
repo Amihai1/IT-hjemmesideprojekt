@@ -84,19 +84,25 @@
         }
 
     </style>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
     <p1>
         <!-- Links (sit on top) -->
         <div class="w3-top topnav">
             <div class="w3-row w3-large">
                 <div class="w3-col s3">
-                    <a href="/Patient Journal.html" class="w3-button w3-block"><i class="fa fa-fw fa-user-o"></i>&nbsp Patientnavn</a>
+                    <a onclick="goBack()" class="w3-button w3-block"><i class="fa fa-arrow-left
+"></i>&nbsp Tilbage</a>
                 </div>
 
                 <div class="w3-col s3 w3-right">
-                    <a href="CGIPersonale" class="w3-button w3-block"><i class="fa fa-sign-out" style="color:#ff0000">
+                    <a href="index.html" class="w3-button w3-block"><i class="fa fa-sign-out" style="color:#ff0000">
                     </i>&nbsp
-                        Tilbage</a>
+                        Log Ud</a>
                 </div>
 
             </div>

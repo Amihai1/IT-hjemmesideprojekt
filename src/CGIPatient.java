@@ -78,12 +78,17 @@ public class CGIPatient {
         System.out.println("<META http-equiv=\"content-type\" content=\"text/html; charset=UTC-8\">");
         System.out.println("<META http-equiv=\"Pragma\" content=\"no-cache\">");
         System.out.println("<META http-equiv=\"expires\" content=\"0\">");
+        System.out.println("<script>\n" +
+                "function goBack() {\n" +
+                "  window.history.back();\n" +
+                "}\n" +
+                "</script>");
         System.out.println("<p1>\n" +
                 "<!-- Links (sit on top) -->\n" +
                 "<div class=\"w3-top topnav\">\n" +
                 "    <div class=\"w3-row w3-large\">\n" +
                 "        <div class=\"w3-col s3\">\n" +
-                "            <a href=\"http://130.226.195.37:39080/cgi-bin/CGIpost\" class=\"w3-button w3-block\"><i class=\"fa fa-fw fa-user-o\"></i>&nbsp Min Side</a>\n" +
+                "            <a onclick=\"goBack()\" class=\"w3-button w3-block\"><i class=\"fa fa-arrow-left\"></i>&nbsp Tilbage</a>\n" +
                 "        </div>\n" +
                 "\n" +
                 "        <div class=\"w3-col s3 w3-right\">\n" +
@@ -140,7 +145,7 @@ public class CGIPatient {
                         " <form action=\"/cgi-bin/CGIBrugerValg\" method=\"post\">\n" +
                         "        <td>" + patientid + "</td>\n" +
                         "        <td> <input type=\"hidden\" name=\"id\" value=" + cprid + ">" + cprid + "</td>\n" +
-                        "        <td> <input type=\"hidden\" name=\"id\" value=" + fornavnid + ">" + fornavnid + "</td>\n" +
+                        "        <td>" + fornavnid + "</td>\n" +
                         "        <td>" + efternavnid + "</td>\n" +
                         "        <td><button type=\"submit\">Se patient</button></td>\n" +
                         "</form>" +

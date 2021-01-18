@@ -20,7 +20,7 @@ public class CGIBrugerValg {
     private static String cookie = null;
     private static String session = null;
     private static String Cpr = null;
-    private static String Patientid=null;
+    private static String Patientid = null;
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Class.forName("org.mariadb.jdbc.Driver");
@@ -39,33 +39,49 @@ public class CGIBrugerValg {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String[] data = {in.readLine()};
+        BufferedReader ind = new BufferedReader(new InputStreamReader(System.in));
+        String[] data = {ind.readLine()};
         inputfraCGI = data[0];
         String[] clientResponse;
         clientResponse = inputfraCGI.split("&");
         String[] cprpost;
         cprpost = clientResponse[0].split("=");
         cprTilDb = cprpost[1];
-        String[] kodepost;
-        kodepost = clientResponse[1].split("=");
-        fornavnid = kodepost[1];
         cookie = cprTilDb;
         handleCookies(new StringTokenizer(cookie, ";\n\r"));
         showHead();
         if (cookie != null) System.out.println("Cookie: " + cookie + "<BR>");
         if (session != null) System.out.println("session: " + session + "<BR>");
         try {
-            if (findUser(cprTilDb, fornavnid) != null) {
+            if (findUser(cprTilDb) != null) {
                 showBody(new StringTokenizer(args[0], "&\n\r"));
             }
-
 
         } catch (IOException | SQLException | ClassNotFoundException ioe) {
             System.out.println("<P>IOException reading POST data: " + ioe + "</P>");
 
-            showTail();
         }
+        showTail();
+    }
+
+    static void showError() {
+        System.out.println("Content-Type: text/html");
+        System.out.println();
+        System.out.println("<!DOCTYPE HTML PUBLIC \" -//W3C//DTD HTML 3.2//EN\" >");
+        System.out.println("<HTML>");
+        System.out.println("<HEAD>");
+        System.out.println("<TITLE>Fejl i oprettelse! application</TITLE>");
+        System.out.println("<META http-equiv=\"content - type\" content=\"text / html; charset = UTF - 8 \">");
+        System.out.println("<META http-equiv=\"Pragma\" content=\"no - cache\">");
+        System.out.println("<meta http-equiv=\"refresh\" content=\"0; URL=http://130.226.195.37:39080/Login.html\"/>");
+        System.out.println("<script>");
+        System.out.println("function myFunction() {\n");
+        System.out.println("alert('Forkert brugernavn/password');");
+        System.out.println("})");
+        System.out.println("</script>");
+        System.out.println("</HEAD>");
+        System.out.println("<BODY  onload=\"alert('Forkert CPR/Kode')\">");
+
     }
 
     private static void showHead() {
@@ -74,22 +90,27 @@ public class CGIBrugerValg {
         System.out.println();
         System.out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2//EN\">");
         System.out.println("<HTML>");
+        System.out.println("<HEAD>");
         System.out.println("<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/4/w3.css\">\n" +
                 "<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Lato\">\n" +
                 "<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n" +
                 "<link rel=\"stylesheet\" href=\"../CSS/standard.css\">\n" +
                 "<link rel=\"stylesheet\" href=\"../CSS/Brugerside.css\">");
-        System.out.println("<HEAD>");
         System.out.println("<TITLE>Vis Brugerside</TITLE>");
         System.out.println("<META http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">");
         System.out.println("<META http-equiv=\"Pragma\" content=\"no-cache\">");
         System.out.println("<META http-equiv=\"expires\" content=\"0\">");
+        System.out.println("<script>\n" +
+                "function goBack() {\n" +
+                "  window.history.back();\n" +
+                "}\n" +
+                "</script>");
         System.out.println("<p1>\n" +
                 "<!-- Links (sit on top) -->\n" +
                 "<div class=\"w3-top topnav\">\n" +
                 "    <div class=\"w3-row w3-large\">\n" +
                 "        <div class=\"w3-col s3\">\n" +
-                "            <a href=\"/index.html\" class=\"w3-button w3-block\"><i class=\"fa fa-fw fa-user-o\"></i>&nbsp Min Side</a>\n" +
+                "            <a onclick=\"goBack()\" class=\"w3-button w3-block\"><i class=\"fa fa-arrow-left\"></i>&nbsp Tilbage</a>\n" +
                 "        </div>\n" +
                 "\n" +
                 "        <div class=\"w3-col s3 w3-right\">\n" +
@@ -101,7 +122,6 @@ public class CGIBrugerValg {
                 "    </div>\n" +
                 "</div>\n" +
                 "</p1>");
-
         System.out.println("</HEAD>");
         System.out.println("<BODY>");
 
@@ -112,7 +132,6 @@ public class CGIBrugerValg {
         while (t.hasMoreTokens()) {
             field = t.nextToken();
             if (field != null) {
-
                 StringTokenizer tt = new StringTokenizer(field, "=\n\r");
                 String s = tt.nextToken();
                 if (s != null) {
@@ -127,10 +146,10 @@ public class CGIBrugerValg {
                 "<div class=\"row1\">\n" +
                 "    <div class=\"column1\">\n" +
                 "        <div class=\"card1\">\n" +
-                "            <form action=\"/cgi-bin/\" method=\"post\"><button type=\"submit\"><img src=\"//images01.nicepage.io/b6/f4/b6f4c452eabd98602023c4a997ae454e.jpeg\"\n" +
+                "            <a href=\"/SendBesked.html\"><img src=\"//images01.nicepage.io/b6/f4/b6f4c452eabd98602023c4a997ae454e.jpeg\"\n" +
                 "                 alt=\"Aftaler\" style=\"width:100%\">\n" +
                 "            <div class=\"centered\">Send Besked</div>\n" +
-                "            </button></form>\n" +
+                "            </a>\n" +
                 "            <div class=\"container1\">\n" +
                 "                <h3>Send besked til patient her</h3>\n" +
                 "            </div>\n" +
@@ -141,12 +160,12 @@ public class CGIBrugerValg {
                 "    <div class=\"row1\">\n" +
                 "    <div class=\"column1\">\n" +
                 "        <div class=\"card1\">\n" +
-                "            <form action=\"/cgi-bin/\" method=\"post\"><button type=\"submit\"><img src=\"//images01.nicepage.io/fd/64/fd645fffe75a3b862c96027a9831be32.jpeg\"\n" +
+                "            <form action=\"/cgi-bin/CGIPatientAftaler\" method=\"post\"><button type=\"submit\"><img src=\"//images01.nicepage.io/fd/64/fd645fffe75a3b862c96027a9831be32.jpeg\"\n" +
                 "                 alt=\"Aftaler\" style=\"width:100%\">\n" +
-                "            <div class=\"centered\">Aftaler</div>\n" +
+                "            <div class=\"centered\">Patient Aftaler</div>\n" +
                 "            </button></form>\n" +
                 "            <div class=\"container1\">\n" +
-                "                <h3>Se dine kommende aftaler</h3>\n" +
+                "                <h3>Patientens kommende aftaler</h3>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
                 "    </div>\n" +
@@ -155,10 +174,10 @@ public class CGIBrugerValg {
                 "        <div class=\"row1\">\n" +
                 "    <div class=\"column1\">\n" +
                 "        <div class=\"card1\">\n" +
-                "            <form action=\"/cgi-bin/\" method=\"post\"><button type=\"submit\"><img src=\"//images01.nicepage.io/b5/fe/b5fe5145dc5c44d9f83a05cdad99ab29.jpeg\"\n" +
+                "            <a href=\"/PatientJournal.html\"><img src=\"//images01.nicepage.io/b5/fe/b5fe5145dc5c44d9f83a05cdad99ab29.jpeg\"\n" +
                 "                 alt=\"Aftaler\" style=\"width:100%\">\n" +
-                "            <div class=\"centered\">Journal</div>\n" +
-                "            </button></form>\n" +
+                "            <div class=\"centered\">Patientjournal</div>\n" +
+                "            </a>\n" +
                 "            <div class=\"container1\">\n" +
                 "                <h3>Se Patientjournaler</h3>\n" +
                 "            </div>\n" +
@@ -188,10 +207,10 @@ public class CGIBrugerValg {
         System.out.println("</BODY>\n</HTML>");
     }
 
-    private static String findUser(String cprTilDb, String fornavnid) throws
+    private static String findUser(String cprTilDb) throws
             SQLException, ClassNotFoundException, IOException {
         String output = "";
-        String sqlFindUser = "select * from patient where cpr ='" + cprTilDb + "' and fornavn='" + fornavnid + "'";
+        String sqlFindUser = "select * from patient where cpr ='" + cprTilDb + "'";
         try {
             statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sqlFindUser);

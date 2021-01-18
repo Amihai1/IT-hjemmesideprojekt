@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../CSS/standard.css">
+    <link rel="stylesheet" href="../CSS/Kontakt.css">
+    <title>Send Besked</title>
+</head>
+<body>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+<p1>
+    <!-- Links (sit on top) -->
+    <div class="w3-top topnav">
+        <div class="w3-row w3-large">
+            <div class="w3-col s3">
+                <a onclick="goBack()" class="w3-button w3-block"><i class="fa fa-arrow-left
+"></i>&nbsp Tilbage</a>
+            </div>
+
+            <div class="w3-col s3 w3-right">
+                <a href="index.html" class="w3-button w3-block"><i class="fa fa-sign-out" style="color:#ff0000">
+                </i>&nbsp
+                    Log Ud</a>
+            </div>
+
+        </div>
+    </div>
+</p1>
+<div class="container" style="margin-top: 80px ">
+    <div class="row">
+        <div class="column">
+            <form action="/cgi-bin/CGISendBesked" method="post">
+                <label for="name">Navn</label>
+                <input type="text" id="name" name="Fornavn" placeholder="Fulde navn.." required>
+                <label for="email">Emne</label>
+                <input type="text" id="email" name="Efternanv" placeholder="emne..." required>
+                <label for="emne">Besked</label>
+                <textarea id="emne" name="emne" placeholder="Skriv her.." style="height:170px"></textarea>
+                <button type="submit" style="float: right">Send besked</button>
+            </form>
+        </div>
+        <div class="column">
+            <img src="../billeder/Besked.JPG" height="661" width="714"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>
