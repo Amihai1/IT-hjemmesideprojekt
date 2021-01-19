@@ -59,7 +59,7 @@
 
 
             //PULS
-            HRV.addRows([
+            HR.addRows([
                 [1, 60], [2, 61], [3, 62], [4, 61], [5, 60], [6, 61], [7, 62], [8, 60], [9, 61], [10, 61],
                 [11, 60], [12, 61], [13, 62], [14, 61], [15, 59], [16, 60], [17, 61], [18, 61], [19, 62], [20, 62],
                 [21, 60], [22, 59], [23, 59], [24, 60], [25, 62], [26, 63], [27, 62], [28, 62], [29, 61], [30, 60],
@@ -91,12 +91,12 @@
                 [281, 75], [282, 71], [283, 70], [284, 67], [285, 63], [286, 60], [287, 61], [288, 60]
             ]);
 
-            HRV.addColumn('number', 'Baseline = 80ms HRV');
+
             HR.addColumn('number', 'Baseline');
             var sum = 0;
             var HRVsum = 0;
             for (var n = 0; n < 288; n++) {
-                sum += parseInt(HRV.getFormattedValue(n, 1));
+                sum += parseInt(HR.getFormattedValue(n, 1));
                 HRVsum += parseInt(HRV.getFormattedValue(n, 1));
 
 
@@ -113,8 +113,8 @@
                 }
             }
 
-
-            HR.addColumn('number', 'Baseline = 104bpm HR');
+            HRV.addColumn('number', 'Baseline = '+ HRVgen+'ms HRV');
+            HR.addColumn('number', 'Baseline = ' + gen+'bpm HR');
 
 
             var options;
@@ -184,7 +184,7 @@
             var HRchart = new google.visualization.LineChart(document.getElementById('HRchart_div'));
             var Samchart = new google.visualization.LineChart(document.getElementById('Samchart_div'));
             chart.draw(HRV, options);
-            HRchart.draw(HRV, graf);
+            HRchart.draw(HR, graf);
             Samchart.draw(sam, sample);
         }
     </script>
