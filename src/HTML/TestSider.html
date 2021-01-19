@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
 <head>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -20,7 +19,7 @@
             HR.addColumn('number', 'HR');
 
             sam.addColumn('number', 'Number');
-            sam.addColumn('number', 'Sam');
+            sam.addColumn('number', 'sam');
 
             //HRV
             HRV.addRows([
@@ -53,8 +52,7 @@
                 [260, 26], [261, 26], [262, 27], [263, 25], [264, 25], [265, 26], [266, 26], [267, 26], [268, 26], [269, 25],
                 [270, 24], [271, 24], [272, 25], [273, 24], [274, 24], [275, 24], [276, 25], [277, 25], [278, 24], [279, 26],
                 [280, 21], [281, 23], [282, 18], [283, 18], [284, 22], [285, 24], [286, 25], [287, 24], [288, 23]
-            ])
-            ;
+            ]);
 
             HRV.addColumn('number', 'Baseline');
 
@@ -101,10 +99,9 @@
                 HRVsum += parseInt(HRV.getFormattedValue(n, 1));
 
 
-
             }
             var gen = parseInt(sum / 288);
-            var HRVgen = parseInt(HRVsum/288);
+            var HRVgen = parseInt(HRVsum / 288);
             for (var i = 0; i < 288; i++) {
                 var a = HRV.getFormattedValue(i, 1);
                 var b = HR.getFormattedValue(i, 1);
@@ -187,11 +184,9 @@
     </script>
 </head>
 <body>
-
 <div id="chart_div" style="height: 500px"></div>
 <div style="text-align: center"></div>
 <div id="HRchart_div" style="height: 500px"></div>
 <div id="samchart_div" style="height: 500px"></div>
 </body>
-
 </html>
