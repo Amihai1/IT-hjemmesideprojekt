@@ -1,77 +1,197 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<HTML>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../CSS/standard.css">
-<link rel="stylesheet" href="../CSS/Login.html.css">
-<HEAD>
-    <TITLE>Aftaler</TITLE>
-    <META http-equiv="content-type" content="text/html; charset=UTF-8">
-    <META http-equiv="Pragma" content="no-cache">
-    <META http-equiv="expires" content="0">
-    <style>
-        table {
-            font-family: arial, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {packages: ['corechart', 'line']});
+        google.charts.setOnLoadCallback(drawChart);
 
-        td, th {
-            border: 1px solid #dddddd;
-            text-align: left;
-            padding: 8px;
-        }
+        function drawChart(index) {
+            var HR = new google.visualization.DataTable();
+            var HRV = new google.visualization.DataTable();
+            var sam = new google.visualization.DataTable();
 
-        tr:nth-child(even) {
-            background-color: #dddddd;
-        }
 
-        table {
-            margin-top: 80px;
-        }
+            HRV.addColumn('number', 'Number');
+            HRV.addColumn('number', 'HRV');
 
-        input {
-            font-size: 26px;
+            HR.addColumn('number', 'Number');
+            HR.addColumn('number', 'HR');
 
+            sam.addColumn('number', 'Number');
+            sam.addColumn('number', 'Sam');
+
+            //HRV
+            HRV.addRows([
+                [1, 28], [2, 28], [3, 22], [4, 23], [5, 24], [6, 19], [7, 19], [8, 21], [9, 23],
+                [10, 24], [11, 22], [12, 23], [13, 22], [14, 23], [15, 24], [16, 23], [17, 22], [18, 21], [19, 22],
+                [20, 23], [21, 22], [22, 21], [23, 23], [24, 24], [25, 23], [26, 24], [27, 24], [28, 23], [29, 23],
+                [30, 22], [31, 23], [32, 23], [33, 22], [34, 21], [35, 22], [36, 23], [37, 22], [38, 21], [39, 21],
+                [40, 22], [41, 22], [42, 21], [43, 21], [44, 20], [45, 22], [46, 22], [47, 21], [48, 22], [49, 21],
+                [50, 20], [51, 22], [52, 21], [53, 22], [54, 22], [55, 21], [56, 21], [57, 23], [58, 24], [59, 22],
+                [60, 23], [61, 18], [62, 17], [63, 17], [64, 19], [65, 17], [66, 15], [67, 13], [68, 13], [69, 12],
+                [70, 12], [71, 14], [72, 14], [73, 18], [74, 16], [75, 14], [76, 15], [77, 16], [78, 14], [79, 17],
+                [80, 19], [81, 18], [82, 19], [83, 18], [84, 16], [85, 14], [86, 14], [87, 17], [88, 20], [89, 23],
+                [90, 26], [91, 25], [92, 26], [93, 27], [94, 26], [95, 25], [96, 24], [97, 19], [98, 20], [99, 21],
+                [100, 22], [101, 22], [102, 21], [103, 20], [104, 21], [105, 22], [106, 22], [107, 22], [108, 24], [109, 21],
+                [110, 23], [111, 21], [112, 21], [113, 22], [114, 23], [115, 22], [116, 22], [117, 23], [118, 23], [119, 21],
+                [120, 23], [121, 22], [122, 23], [123, 24], [124, 23], [125, 23], [126, 22], [127, 21], [128, 23], [129, 23],
+                [130, 20], [131, 21], [132, 23], [133, 22], [134, 24], [135, 23], [136, 24], [137, 22], [138, 21], [139, 23],
+                [140, 22], [141, 22], [142, 21], [143, 23], [144, 22], [145, 21], [146, 21], [147, 23], [148, 21], [149, 21],
+                [150, 22], [151, 23], [152, 22], [153, 23], [154, 23], [155, 22], [156, 21], [157, 23], [158, 22], [159, 21],
+                [160, 21], [161, 22], [162, 21], [163, 23], [164, 22], [165, 22], [166, 21], [167, 23], [168, 23], [169, 20],
+                [170, 18], [171, 17], [172, 15], [173, 14], [174, 15], [175, 16], [176, 18], [177, 19], [178, 20], [179, 22],
+                [180, 21], [181, 22], [182, 24], [183, 23], [184, 22], [185, 22], [186, 21], [187, 22], [188, 24], [189, 22],
+                [190, 16], [191, 13], [192, 12], [193, 12], [194, 11], [195, 13], [196, 15], [197, 14], [198, 14], [199, 13],
+                [200, 11], [201, 13], [202, 13], [203, 12], [204, 14], [205, 16], [206, 16], [207, 15], [208, 17], [209, 17],
+                [210, 17], [211, 18], [212, 19], [213, 19], [214, 20], [215, 23], [216, 23], [217, 24], [218, 23], [219, 22],
+                [220, 21], [221, 23], [222, 23], [223, 22], [224, 23], [225, 24], [226, 23], [227, 23], [228, 23], [229, 22],
+                [230, 24], [231, 25], [232, 24], [233, 26], [234, 22], [235, 23], [236, 21], [237, 24], [238, 23], [239, 22],
+                [240, 23], [241, 24], [242, 22], [243, 21], [244, 23], [245, 25], [246, 26], [247, 26], [248, 28], [249, 27],
+                [250, 27], [251, 26], [252, 25], [253, 26], [254, 25], [255, 26], [256, 27], [257, 26], [258, 25], [259, 26],
+                [260, 26], [261, 26], [262, 27], [263, 25], [264, 25], [265, 26], [266, 26], [267, 26], [268, 26], [269, 25],
+                [270, 24], [271, 24], [272, 25], [273, 24], [274, 24], [275, 24], [276, 25], [277, 25], [278, 24], [279, 26],
+                [280, 21], [281, 23], [282, 18], [283, 18], [284, 22], [285, 24], [286, 25], [287, 24], [288, 23]
+            ])
+            ;
+
+            HRV.addColumn('number', 'Baseline');
+
+
+            //PULS
+            HR.addRows([
+                [1, 102], [2, 102], [3, 102], [4, 103], [5, 103], [6, 102], [7, 102], [8, 102], [9, 104], [10, 104],
+                [11, 104], [12, 105], [13, 102], [14, 102], [15, 102], [16, 102], [17, 104], [18, 104], [19, 104], [20, 104],
+                [21, 104], [22, 104], [23, 106], [24, 106], [25, 102], [26, 102], [27, 102], [28, 102], [29, 103], [30, 105],
+                [31, 103], [32, 102], [33, 107], [34, 107], [35, 102], [36, 102], [37, 101], [38, 102], [39, 104], [40, 103],
+                [41, 102], [42, 103], [43, 102], [44, 102], [45, 102], [46, 103], [47, 104], [48, 107], [49, 102], [50, 106],
+                [51, 107], [52, 111], [53, 113], [54, 113], [55, 121], [56, 117], [57, 112], [58, 108], [59, 108], [60, 107],
+                [61, 102], [62, 103], [63, 103], [64, 103], [65, 103], [66, 104], [67, 102], [68, 102], [69, 101], [70, 104],
+                [71, 105], [72, 102], [73, 102], [74, 101], [75, 103], [76, 102], [77, 103], [78, 103], [79, 103], [80, 103],
+                [81, 103], [82, 104], [83, 109], [84, 104], [85, 106], [86, 105], [87, 104], [88, 103], [89, 102], [90, 103],
+                [91, 102], [92, 101], [93, 102], [94, 102], [95, 103], [96, 102], [97, 101], [98, 102], [99, 101], [100, 102],
+                [101, 102], [102, 103], [103, 102], [104, 102], [105, 101], [106, 100], [107, 101], [108, 101], [109, 101], [110, 100],
+                [111, 101], [112, 103], [113, 103], [114, 102], [115, 101], [116, 103], [117, 103], [118, 102], [119, 101], [120, 103],
+                [121, 102], [122, 104], [123, 103], [124, 104], [125, 102], [126, 101], [127, 103], [128, 102], [129, 102], [130, 101],
+                [131, 100], [132, 102], [133, 101], [134, 101], [135, 103], [136, 101], [137, 101], [138, 102], [139, 103], [140, 102],
+                [141, 103], [142, 103], [143, 102], [144, 101], [145, 103], [146, 102], [147, 101], [148, 101], [149, 102], [150, 101],
+                [151, 103], [152, 102], [153, 102], [154, 102], [155, 101], [156, 103], [157, 103], [158, 102], [159, 101], [160, 102],
+                [161, 104], [162, 102], [163, 101], [164, 102], [165, 104], [166, 102], [167, 103], [168, 103], [169, 101], [170, 102],
+                [171, 104], [172, 103], [173, 101], [174, 102], [175, 101], [176, 102], [177, 108], [178, 106], [179, 103], [180, 100],
+                [181, 108], [182, 112], [183, 120], [184, 141], [185, 142], [186, 142], [187, 142], [188, 132], [189, 135], [190, 113],
+                [191, 105], [192, 100], [193, 100], [194, 109], [195, 108], [196, 109], [197, 109], [198, 107], [199, 107], [200, 108],
+                [201, 108], [202, 109], [203, 108], [204, 106], [205, 107], [206, 106], [207, 102], [208, 101], [209, 100], [210, 101],
+                [211, 101], [212, 102], [213, 101], [214, 100], [215, 109], [216, 100], [217, 101], [218, 102], [219, 109], [220, 105],
+                [221, 106], [222, 105], [223, 104], [224, 105], [225, 106], [226, 105], [227, 104], [228, 104], [229, 108], [230, 100],
+                [231, 101], [232, 102], [233, 101], [234, 102], [235, 101], [236, 102], [237, 103], [238, 102], [239, 103], [240, 102],
+                [241, 102], [242, 102], [243, 100], [244, 101], [245, 101], [246, 102], [247, 102], [248, 101], [249, 100], [250, 101],
+                [251, 100], [252, 100], [253, 103], [254, 105], [255, 108], [256, 100], [257, 102], [258, 102], [259, 101], [260, 102],
+                [261, 101], [262, 102], [263, 103], [264, 102], [265, 104], [266, 106], [267, 105], [268, 104], [269, 101], [270, 105],
+                [271, 101], [272, 100], [273, 103], [274, 100], [275, 101], [276, 100], [277, 101], [278, 102], [279, 104], [280, 106],
+                [281, 105], [282, 103], [283, 104], [284, 104], [285, 105], [286, 103], [287, 102], [288, 101]
+            ]);
+
+            HRV.addColumn('number', 'Baseline = 21ms HRV');
+            HR.addColumn('number', 'Baseline');
+            var sum = 0;
+            var HRVsum = 0;
+            for (var n = 0; n < 288; n++) {
+                sum += parseInt(HR.getFormattedValue(n, 1));
+                HRVsum += parseInt(HRV.getFormattedValue(n, 1));
+
+
+
+            }
+            var gen = parseInt(sum / 288);
+            var HRVgen = parseInt(HRVsum/288);
+            for (var i = 0; i < 288; i++) {
+                var a = HRV.getFormattedValue(i, 1);
+                var b = HR.getFormattedValue(i, 1);
+                if (a < HRVgen && b < gen) {
+                    sam.addRow([i, 1])
+                } else {
+                    sam.addRow([i, 0])
+                }
+            }
+
+
+            HR.addColumn('number', 'Baseline = 104bpm HR');
+
+
+            var options;
+            options = {
+                hAxis: {title: 'Samples',},
+                series: {
+                    1: {
+                        targetAxisIndex: 1,     // <-- assign y1 to second y-axis
+                        visibleInLegend: false  // <-- hide from legend
+                    }
+                },
+                vAxis: {
+                    title: 'HRV', baseline: HRVgen, baselineColor: 'orange', minValue: 0, maxValue: 100, maxHeight: 100,
+                },
+
+                vAxes: {
+                    1: {
+
+                        textStyle: {
+                            color: 'red'
+                        },
+                        ticks: [HRVgen],
+
+                    }
+                }
+            };
+            var sample;
+            sample = {
+                hAxis: {title: 'Samples',},
+                vAxis: {title: 'Sammenligning', maxValue: 1, maxHeight: 1},
+            };
+
+            var graf;
+            graf = {
+                hAxis: {title: 'Samples'},
+
+                series: {
+                    1: {
+                        targetAxisIndex: 1,     // <-- assign y1 to second y-axis
+                        visibleInLegend: false  // <-- hide from legend
+                    }
+                },
+
+                vAxis: {
+                    title: 'HR', baseline: gen, baselineColor: 'orange', minValue: 0, maxValue: 160, maxHeight: 160,
+                },
+
+                vAxes: {
+                    1: {
+
+                        textStyle: {
+                            color: 'red'
+                        },
+                        ticks: [gen]
+
+                    }
+                }
+            };
+
+
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            var HRchart = new google.visualization.LineChart(document.getElementById('HRchart_div'));
+            var samchart = new google.visualization.LineChart(document.getElementById('samchart_div'));
+            chart.draw(HRV, options);
+            HRchart.draw(HR, graf);
+            samchart.draw(sam, sample);
         }
-        p{
-            font-size: 24px;
-        }
-    </style>
-</HEAD>
+    </script>
+</head>
 <body>
 
-<!-- Links (sit on top) -->
-<div class="w3-top topnav">
-    <div class="w3-row w3-large">
-        <div class="w3-col s3">
-            <a  href="Brugerside.html" class="w3-button w3-block"><i class="fa fa-fw fa-user-o"></i>&nbsp Min Side</a>
-        </div>
-        <div class="w3-col s3 w3-right">
-            <a href="/index.html" class="w3-button w3-block"><i class="fa fa-sign-out" style="color:#ff0000">
-            </i>&nbsp
-                Log Ud</a>
-        </div>
-
-    </div>
-</div>
-<div class="container1">
-    <p><b>Søg Patient</b></p>
-    <form action="/cgi-bin/CGILavAftale" method="post">
-        <label><p>Søg CPR</p></label>
-        <input type="number" name="søgcpr" placeholder="Indtast CPR-nummer">
-        <label><p>Søg fornavn</p></label>
-        <input type="text" name="søgfornavn" placeholder="Indtast Fornavn">
-        <label><p>Søg efternavn</p></label>
-        <input type="text" name="skade" placeholder="Indtast Efternavn" maxlength="50" text-size="20px">
-        <input type="submit" title="Submit">
-        <input type="text" value="1">
-    </form>
-</div>
-<input type="number" name="cpr">
-
+<div id="chart_div" style="height: 500px"></div>
+<div style="text-align: center"></div>
+<div id="HRchart_div" style="height: 500px"></div>
+<div id="samchart_div" style="height: 500px"></div>
 </body>
-
 
 </html>

@@ -155,7 +155,7 @@ public class MinCGI {
                 "        <div class=\"row1\">\n" +
                 "    <div class=\"column1\">\n" +
                 "        <div class=\"card1\">\n" +
-                "            <a href=\"/Journaler.html\"><img src=\"//images01.nicepage.io/b5/fe/b5fe5145dc5c44d9f83a05cdad99ab29.jpeg\" alt=\"Journaler\"\n" +
+                "            <a href=\"/Journal.html\"><img src=\"//images01.nicepage.io/b5/fe/b5fe5145dc5c44d9f83a05cdad99ab29.jpeg\" alt=\"Journaler\"\n" +
                 "                 style=\"width:100%\">\n" +
                 "            <div class=\"centered\">Journaler</div>\n" +
                 "            <a/>\n" +
@@ -173,8 +173,6 @@ public class MinCGI {
                 "        <!-- Footer -->\n" +
                 "\n" +
                 "        <footer class=\"w3-center\">\n" +
-                "            <br>\n" +
-
                 "            <p>Powered by DTU Sundtek</p>\n" +
                 "        </footer>\n" +
                 "\n" +
