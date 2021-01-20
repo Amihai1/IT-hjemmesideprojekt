@@ -1,3 +1,4 @@
+/** @author Amihai Kevin*/
 public class RMS {
     public static void main(String[] args) {
         double alle = 0;

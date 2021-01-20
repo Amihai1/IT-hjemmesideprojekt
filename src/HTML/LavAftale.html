@@ -73,7 +73,7 @@
         <label><p>Dato og tid:</p></label>
         <input type="datetime-local" name="dato og tid" placeholder="år-måned-dag time:minut" required>
         <label><p>Varighed i minutter:</p></label>
-        <input type="number" name="varighed" required>
+        <input type="number" name="varighed"  min="1" max="30" required>
         <label><p>Skade:</p></label>
         <input type="text" name="skade" placeholder="Beskriv skade kort" maxlength="50" text-size="20px" required>
         <input type="submit" title="Submit">

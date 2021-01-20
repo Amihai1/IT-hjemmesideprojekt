@@ -1,3 +1,4 @@
+/** @author Amihai */
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -81,7 +82,7 @@ public class CGIPersonale {
                 "<link rel=\"stylesheet\" href=\"../CSS/standard.css\">\n" +
                 "<link rel=\"stylesheet\" href=\"../CSS/Login.html.css\">\n" +
                 "<HEAD>\n" +
-                "    <TITLE>Patient</TITLE>\n" +
+                "    <TITLE>Personale side</TITLE>\n" +
                 "    <META http-equiv=\"content-type\" content=\"text/html; charset=UTC-8\">\n" +
                 "    <META http-equiv=\"Pragma\" content=\"no-cache\">\n" +
                 "    <META http-equiv=\"expires\" content=\"0\">\n" +

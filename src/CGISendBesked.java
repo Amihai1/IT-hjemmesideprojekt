@@ -1,3 +1,5 @@
+/** @author Amihai */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -115,7 +117,7 @@ public class CGISendBesked {
         System.out.println("<TITLE>Fejl i oprettelse! application</TITLE>");
         System.out.println("<META http-equiv=\"content - type\" content=\"text / html; charset = UTF - 8 \">");
         System.out.println("<META http-equiv=\"Pragma\" content=\"no - cache\">");
-        System.out.println("<meta http-equiv=\"refresh\" content=\"0; URL=http://130.226.195.37:39080/cgi-bin/CGIBrugerValg\"/>");
+        System.out.println("<meta http-equiv=\"refresh\" content=\"0; URL=http://130.226.195.37:39080/SendBesked.html\"/>");
         System.out.println("</HEAD>");
         System.out.println("<BODY>");
     }

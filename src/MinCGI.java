@@ -1,3 +1,4 @@
+/** @author Amihai Kevin*/
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -152,15 +153,15 @@ public class MinCGI {
                 "    </div>\n" +
                 "    </div>\n" +
                 "\n" +
-                "        <div class=\"row1\">\n" +
+                "    <div class=\"row1\">\n" +
                 "    <div class=\"column1\">\n" +
                 "        <div class=\"card1\">\n" +
-                "            <a href=\"/Journal.html\"><img src=\"//images01.nicepage.io/b5/fe/b5fe5145dc5c44d9f83a05cdad99ab29.jpeg\" alt=\"Journaler\"\n" +
+                "            <form action=\"/cgi-bin/CGIPatientJournalValg\" method=\"post\"><button type=\"submit\"><img src=\"//images01.nicepage.io/b5/fe/b5fe5145dc5c44d9f83a05cdad99ab29.jpeg\" alt=\"Journaler\"\n" +
                 "                 style=\"width:100%\">\n" +
-                "            <div class=\"centered\">Journaler</div>\n" +
-                "            <a/>\n" +
+                "            <div class=\"centered\">Journal</div>\n" +
+                "            </button></form>\n" +
                 "            <div class=\"container1\">\n" +
-                "                <h3>Se dine Journaler fra sygehus</h3>\n" +
+                "                <h3>Se din journal</h3>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
                 "    </div>\n" +

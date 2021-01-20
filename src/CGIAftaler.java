@@ -1,4 +1,5 @@
-import java.nio.charset.StandardCharsets;
+/** @author Amihai Sanne*/
+
 import java.sql.*;
 import java.util.StringTokenizer;
 
@@ -52,6 +53,7 @@ public class CGIAftaler {
         System.out.println("<META http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\">");
         System.out.println("<META http-equiv=\"Pragma\" content=\"no-cache\">");
         System.out.println("<META http-equiv=\"expires\" content=\"0\">");
+        //https://www.w3schools.com/jsref/met_his_back.asp
         System.out.println("<script>\n" +
                 "function goBack() {\n" +
                 "  window.history.back();\n" +

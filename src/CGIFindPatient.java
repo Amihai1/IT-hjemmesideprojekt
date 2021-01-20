@@ -1,6 +1,9 @@
+/** @author Amihai */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.sql.*;
 
 public class CGIFindPatient {
@@ -9,6 +12,7 @@ public class CGIFindPatient {
     private static String fornavnid = null;
     private static String efternavnid = null;
     private static String cprid = null;
+    private static String result = null;
     private static PreparedStatement prep = null;
     static String inputCGI = null;
 
@@ -87,7 +91,7 @@ public class CGIFindPatient {
                         " <form action=\"/cgi-bin/CGIBrugerValg\" method=\"post\">\n" +
                         "        <td> <input type=\"hidden\" value=" + patientid + ">" + patientid + "</td>\n" +
                         "        <td> <input type=\"hidden\" value=" + cprid + ">" + cprid + "</td>\n" +
-                        "        <td>" + fornavnid + "</td>\n" +
+                        "        <td>" + result + "</td>\n" +
                         "        <td>" + efternavnid + "</td>\n" +
                         "        <td><button type=\"submit\">Valg af bruger</button></td>\n" +
                         "</form>" +
@@ -131,6 +135,7 @@ public class CGIFindPatient {
             while (rs.next()) {
                 cprid = String.valueOf(rs.getInt("cpr"));
                 fornavnid = rs.getString("fornavn");
+                result = java.net.URLDecoder.decode(fornavnid, StandardCharsets.UTF_8);
                 efternavnid = rs.getString("efternavn");
                 patientid = String.valueOf(rs.getInt("patientid"));
                 showBody();
