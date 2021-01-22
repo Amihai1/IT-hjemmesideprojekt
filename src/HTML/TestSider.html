@@ -176,10 +176,10 @@
             };
 
 
-            var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+            var HRVchart = new google.visualization.LineChart(document.getElementById('chart_div'));
             var HRchart = new google.visualization.LineChart(document.getElementById('HRchart_div'));
             var samchart = new google.visualization.LineChart(document.getElementById('samchart_div'));
-            chart.draw(HRV, options);
+            HRVchart.draw(HRV, options);
             HRchart.draw(HR, graf);
             samchart.draw(sam, sample);
         }
