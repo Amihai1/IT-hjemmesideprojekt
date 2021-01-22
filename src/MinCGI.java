@@ -24,28 +24,17 @@ public class MinCGI {
     private static String cookie = null;
     private static String session = null;
 
-
-// here we use DBComm as a classname, if you use this method, make sure to change it to whatever class you use the
-    // logger from
-
-
     public static void main(String[] args) throws ClassNotFoundException, IOException {
         Class.forName("org.mariadb.jdbc.Driver");
-        //mysql skal  ndres senere til MariaDB, localhost til en IPaddresse -
         String user, pass;
         user = "oskar";
         pass = "123456789";
-        // url="jdbc:mysql://localhost:3306/phoenixpoint?serverTimezone=Europe/Amsterdam&amp";
-
-        // Skal man fx. bruge 127.0.0.1 til en remote maskine?
-//Connection connection =
-// DriverManager.getConnection("jdbc:mariadb://localhost:3306/DB?user=root&password=myPassword");
-        //T nk jer om - kan man opn  mariadb forbindelse til en anden maskine uden at  ndre denne her?
         try {
             conn = DriverManager.getConnection(url2, user, pass);
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        //lavet under IT og Kommunikationsprojekt i samarbehde med Osama.
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         String[] data = {in.readLine()};
         inputfraCGI = data[0];
@@ -122,7 +111,7 @@ public class MinCGI {
         System.out.println("<BODY>");
 
     }
-
+    //billedekilder findes i index.html
     private static void showBody() {
         System.out.println("<p2>\n" +
                 "<h2>\n" +

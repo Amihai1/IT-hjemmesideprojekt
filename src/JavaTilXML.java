@@ -27,8 +27,6 @@ public class JavaTilXML {
             fileWriter.write(xmlstring);
             fileWriter.close();
         }catch (Exception e){
-            //https://www.baeldung.com/jackson-jsonmappingexception use this to locate problems with things not being where
-            //they should be
             e.printStackTrace();
         }
 

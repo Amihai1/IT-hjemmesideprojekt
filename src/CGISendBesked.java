@@ -50,17 +50,9 @@ public class CGISendBesked {
         showTail();
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-
-            //mysql skal  ndres senere til MariaDB, localhost til en IPaddresse -
             String user, pass;
             user = "oskar";
             pass = "123456789";
-            // url="jdbc:mysql://localhost:3306/phoenixpoint?serverTimezone=Europe/Amsterdam&amp";
-
-            // Skal man fx. bruge 127.0.0.1 til en remote maskine?
-//Connection connection =
-// DriverManager.getConnection("jdbc:mariadb://localhost:3306/DB?user=root&password=myPassword");
-            //T nk jer om - kan man opn  mariadb forbindelse til en anden maskine uden at  ndre denne her?
             conn = DriverManager.getConnection(url2, user, pass);
             System.out.println("im in");
 
@@ -83,7 +75,6 @@ public class CGISendBesked {
             beskedpost = clientResponse[2].split("=");
             Besked = beskedpost[1];
             String result = java.net.URLDecoder.decode(Besked, StandardCharsets.UTF_8);
-            //String beskedvirker = Besked.replaceAll("\\+", " ").replaceAll("%2C", ",").replaceAll("%C3%B8", "ø");
             cpr = session;
 
             try {
